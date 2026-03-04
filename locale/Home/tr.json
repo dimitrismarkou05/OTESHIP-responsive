@@ -1,0 +1,48 @@
+{
+  "hero": {
+    "title": "OTESHIP",
+    "subtitle": "Kapsayıcı Girişimcilik için Erasmus+ Projesi",
+    "description": "Üç özel eğitim okulunda el yapımı seramik çalışmaları ve iş yerinde kapsayıcılık girişimleri aracılığıyla engelli öğrencilerin güçlendirilmesi",
+    "viewCeramics": "Atölyeleri Görüntüle",
+    "learnMore": "Daha Fazla Bilgi"
+  },
+  "about": {
+    "title": "OTESHIP Hakkında",
+    "description": "Erasmus+ projemiz, yenilikçi seramik sanatları programları aracılığıyla özel eğitim ile kapsayıcı girişimcilik arasındaki boşluğu kapatmayı amaçlamaktadır"
+  },
+  "goals": {
+    "title": "Proje Hedefleri",
+    "description": "Misyonumuz, kapsayıcı girişimcilik ve anlamlı istihdam için sürdürülebilir yollar oluşturmaktır",
+    "skillDevelopment": "Beceri Geliştirme",
+    "skillDevelopmentDesc": "Engelli öğrenciler arasında seramik üretim becerilerinin ve girişimcilik yetkinliklerinin geliştirilmesi",
+    "teacherTraining": "Öğretmen Eğitimi",
+    "teacherTrainingDesc": "Eğitimcilere kapsayıcı öğretim yöntemleri konusunda kapsamlı mesleki gelişim desteği sağlanması",
+    "employerEngagement": "İşveren Katılımı",
+    "employerEngagementDesc": "Kapsayıcı istihdam uygulamalarına bağlı işverenlerle iş birlikleri kurulması",
+    "handsOnLearning": "Uygulamalı Öğrenme",
+    "handsOnLearningDesc": "Öğrencilerimiz, rehberli seramik atölyeleri ve gerçek yaşam iş deneyimleri aracılığıyla pratik beceriler geliştirmektedir"
+  },
+  "schools": {
+    "title": "Ortak Okullar",
+    "description": "Kapsayıcı fırsatlar oluşturmak amacıyla birlikte çalışan üç özel eğitim kurumu"
+  },
+  "ceramics": {
+    "title": "El Yapımı Seramikler",
+    "description": "Yetenekli öğrencilerimiz tarafından üretilen, beceri ve yaratıcılıklarını yansıtan estetik ve işlevsel seramik ürünler"
+  },
+  "opportunities": {
+    "title": "Mesleki Gelişim Fırsatları",
+    "description": "Eğitimciler, işverenler ve toplum liderleri için tasarlanmış kapsamlı eğitim programlarımıza katılın"
+  },
+  "contact": {
+    "title": "Katılım Sağlayın",
+    "description": "Engelli öğrenciler için kapsayıcı fırsatlar oluşturma misyonumuza katılın",
+    "contactInfo": "İletişim Bilgileri",
+    "sendMessage": "Bize Mesaj Gönderin",
+    "name": "Ad Soyad *",
+    "email": "E-posta *",
+    "phone": "Telefon Numarası *",
+    "message": "Mesaj *",
+    "sendButton": "Mesaj Gönder"
+  }
+}

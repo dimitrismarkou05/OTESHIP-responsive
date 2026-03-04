@@ -1,0 +1,48 @@
+{
+  "hero": {
+    "title": "OTESHIP",
+    "subtitle": "Projekt Erasmus+ na rzecz Przedsiębiorczości Włączającej",
+    "description": "Wzmacnianie pozycji uczniów z niepełnosprawnościami poprzez rękodzieło ceramiczne oraz inicjatywy na rzecz integracji w miejscu pracy w trzech szkołach specjalnych",
+    "viewCeramics": "Zobacz Warsztaty",
+    "learnMore": "Dowiedz się więcej"
+  },
+  "about": {
+    "title": "O projekcie OTESHIP",
+    "description": "Nasz projekt Erasmus+ łączy edukację specjalną z przedsiębiorczością włączającą poprzez innowacyjne programy artystyczne z zakresu ceramiki"
+  },
+  "goals": {
+    "title": "Cele projektu",
+    "description": "Naszą misją jest tworzenie trwałych ścieżek rozwoju w zakresie przedsiębiorczości włączającej oraz zapewnianie wartościowych możliwości zatrudnienia",
+    "skillDevelopment": "Rozwój umiejętności",
+    "skillDevelopmentDesc": "Rozwijanie umiejętności ceramicznych oraz kompetencji przedsiębiorczych wśród uczniów z niepełnosprawnościami",
+    "teacherTraining": "Szkolenie nauczycieli",
+    "teacherTrainingDesc": "Zapewnienie kompleksowego wsparcia i rozwoju zawodowego dla nauczycieli w zakresie metod edukacji włączającej",
+    "employerEngagement": "Współpraca z pracodawcami",
+    "employerEngagementDesc": "Budowanie partnerstw z pracodawcami zaangażowanymi w praktyki zatrudniania włączającego",
+    "handsOnLearning": "Nauka poprzez praktykę",
+    "handsOnLearningDesc": "Nasi uczniowie rozwijają praktyczne umiejętności poprzez warsztaty ceramiczne oraz doświadczenia biznesowe w rzeczywistych warunkach"
+  },
+  "schools": {
+    "title": "Szkoły partnerskie",
+    "description": "Trzy wyspecjalizowane instytucje edukacyjne współpracujące w celu tworzenia inkluzyjnych możliwości"
+  },
+  "ceramics": {
+    "title": "Ręcznie wykonana ceramika",
+    "description": "Piękne i funkcjonalne wyroby ceramiczne stworzone przez naszych utalentowanych uczniów, prezentujące ich umiejętności i kreatywność"
+  },
+  "opportunities": {
+    "title": "Możliwości rozwoju zawodowego",
+    "description": "Dołącz do naszych kompleksowych programów szkoleniowych skierowanych do nauczycieli, pracodawców oraz liderów społeczności"
+  },
+  "contact": {
+    "title": "Zaangażuj się",
+    "description": "Dołącz do naszej misji tworzenia inkluzyjnych możliwości dla uczniów z niepełnosprawnościami",
+    "contactInfo": "Informacje kontaktowe",
+    "sendMessage": "Wyślij wiadomość",
+    "name": "Imię i nazwisko *",
+    "email": "Adres e-mail *",
+    "phone": "Numer telefonu *",
+    "message": "Wiadomość *",
+    "sendButton": "Wyślij wiadomość"
+  }
+}

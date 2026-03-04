@@ -2,25 +2,42 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import enHome from "./Home/en.json";
 import grHome from "./Home/gr.json";
+import plHome from "./Home/pl.json";
+import trHome from "./Home/tr.json";
+
 import enAbout from "./About/en.json";
+
 import enGuide from "./Guide/en.json";
+
 import enWorkshops from "./Workshops/en.json";
+
 import enGallery from "./Gallery/en.json";
+
 import enLayouts from "./layouts/en.json";
 import grLayouts from "./layouts/gr.json";
+import plLayouts from "./layouts/pl.json";
+import trLayouts from "./layouts/tr.json";
 
 const resources = {
   en: {
     home: enHome,
     about: enAbout,
     guide: enGuide,
-    layouts: enLayouts,
     workshops: enWorkshops,
     gallery: enGallery,
+    layouts: enLayouts,
   },
   ελ: {
     home: grHome,
     layouts: grLayouts,
+  },
+  pl: {
+    home: plHome,
+    layouts: plLayouts,
+  },
+  tr: {
+    home: trHome,
+    layouts: trLayouts,
   },
 };
 

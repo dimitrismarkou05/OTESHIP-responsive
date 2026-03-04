@@ -13,15 +13,10 @@
     "quickLinks": "Γρήγοροι Σύνδεσμοι",
     "home": "Αρχική",
     "about": "Σχετικά",
-    "partnerSchools": "Συνεργαζόμενα Σχολεία",
+    "guide": "Οδηγός",
     "ceramics": "Εργαστήρια",
     "contact": "Επικοινωνία",
-    "projectReports": "Αναφορές Έργου",
-    "trainingMaterials": "Υλικά Εκπαίδευσης",
-    "bestPractices": "Καλές Πρακτικές",
-    "newsUpdates": "Νέα & Ενημερώσεις",
-    "privacyPolicy": "Πολιτική Απορρήτου",
-    "copyright": "© {{year}} Έργο OTESHIP. Με επιφύλαξη παντός δικαιώματος.",
-    "projectNumber": "Αριθμός Έργου: {{number}}"
+    "copyright": "© {{year}} OTESHIP Project. Με επιφύλαξη παντός δικαιώματος.",
+    "projectNumber": "Αριθμός Project: {{number}}"
   }
 }

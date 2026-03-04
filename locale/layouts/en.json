@@ -13,14 +13,9 @@
     "quickLinks": "Quick Links",
     "home": "Home",
     "about": "About",
-    "partnerSchools": "Partner Schools",
+    "guide": "Guide",
     "ceramics": "Workshops",
     "contact": "Contact",
-    "projectReports": "Project Reports",
-    "trainingMaterials": "Training Materials",
-    "bestPractices": "Best Practices",
-    "newsUpdates": "News & Updates",
-    "privacyPolicy": "Privacy Policy",
     "copyright": "© {{year}} OTESHIP Project. All rights reserved.",
     "projectNumber": "Project Number: {{number}}"
   }

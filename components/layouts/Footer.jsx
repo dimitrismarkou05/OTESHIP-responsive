@@ -6,14 +6,9 @@ export default function Footer() {
   const quickLinks = [
     { name: t("footer.home"), href: "/" },
     { name: t("footer.about"), href: "/about" },
-    { name: t("footer.partnerSchools"), href: "/schools" },
+    { name: t("footer.guide"), href: "/guide" },
     { name: t("footer.ceramics"), href: "/ceramics" },
     { name: t("footer.contact"), href: "/contact" },
-    { name: t("footer.projectReports"), href: "/" },
-    { name: t("footer.trainingMaterials"), href: "/" },
-    { name: t("footer.bestPractices"), href: "/" },
-    { name: t("footer.newsUpdates"), href: "/" },
-    { name: t("footer.privacyPolicy"), href: "/" },
   ];
 
   const projectNumber = "2023-2-EL01-KA210-VET-000170737";

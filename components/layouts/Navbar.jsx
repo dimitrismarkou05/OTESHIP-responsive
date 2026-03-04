@@ -98,7 +98,7 @@ export default function Navbar() {
       </div>
 
       {/* Center Section */}
-      <div className="[--hover-color:#aeaeae] dark:[--hover-color:#aeaeaebd] text-base font-medium flex-1 text-center space-x-12 text-(--color-dark-text) dark:text-white">
+      <div className="[--hover-color:#aeaeae] min-w-fit dark:[--hover-color:#aeaeaebd] text-base font-medium flex-1 text-center space-x-12 text-(--color-dark-text) dark:text-white">
         <Link to="/" className="hover-anim">
           {t("navbar.home")}
         </Link>

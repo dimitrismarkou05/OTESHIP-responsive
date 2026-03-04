@@ -1,0 +1,22 @@
+{
+  "navbar": {
+    "home": "Strona główna",
+    "about": "O nas",
+    "guide": "Przewodnik",
+    "ceramics": "Warsztaty",
+    "contact": "Kontakt"
+  },
+  "footer": {
+    "title": "OTESHIP",
+    "description": "Projekt Erasmus+ poświęcony promowaniu włączenia osób z niepełnosprawnościami na rynku pracy poprzez ręcznie wykonywaną ceramikę oraz edukację przedsiębiorczości.",
+    "coFunded": "Współfinansowane przez Unię Europejską",
+    "quickLinks": "Szybkie linki",
+    "home": "Strona główna",
+    "about": "O nas",
+    "guide": "Przewodnik",
+    "ceramics": "Warsztaty",
+    "contact": "Kontakt",
+    "copyright": "© {{year}} Projekt OTESHIP. Wszelkie prawa zastrzeżone.",
+    "projectNumber": "Numer projektu: {{number}}"
+  }
+}
