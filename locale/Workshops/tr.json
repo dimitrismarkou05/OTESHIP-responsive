@@ -1,0 +1,18 @@
+{
+  "hero": {
+    "title": "Seramik Sanatıyla Geleceği Şekillendirmek",
+    "description": "Avrupa’daki üç özel eğitim okulundan öğrencileri bir araya getiren, yaratıcılık ve kapsayıcılığı buluşturan ve kilin dokunsal dilini keşfetmeye odaklanan kültürlerarası bir yolculuk.",
+    "exploreWorkshops": "Atölyeleri Keşfet"
+  },
+  "about": {
+    "title": "İş Birlikçi Seramik Atölyeleri"
+  },
+  "gallery": {
+    "title": "Öğrenci Galerisi",
+    "description": "Öğrencilerimiz tarafından üretilen eserlerden seçilmiş bir koleksiyon.",
+    "viewMore": "Tüm Eserleri Gör"
+  },
+  "workshopCardBig": {
+    "keyOutcomes": "Temel Kazanımlar"
+  }
+}

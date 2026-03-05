@@ -1,6 +1,6 @@
 import handsOnImage from "../../assets/clay-image-1.png";
 
-export const goalsData = {
+const goalsData = {
   en: {
     goals: [
       {
@@ -29,6 +29,7 @@ export const goalsData = {
         "Our students develop practical skills through guided ceramic workshops and real-world business experiences",
     },
   },
+
   ελ: {
     goals: [
       {
@@ -41,13 +42,13 @@ export const goalsData = {
         number: "2",
         title: "Εκπαίδευση Εκπαιδευτικών",
         description:
-          "Παροχή ολοκληρωμένης επαγγελματικής ανάπτυξης για εκπαιδευτικούς σε inclusive μεθόδους διδασκαλίας",
+          "Παροχή ολοκληρωμένης επαγγελματικής ανάπτυξης για εκπαιδευτικούς σε συμπεριληπτικές μεθόδους διδασκαλίας",
       },
       {
         number: "3",
         title: "Συμμετοχή Εργοδοτών",
         description:
-          "Δημιουργία συνεργασιών με εργοδότες που δεσμεύονται σε inclusive πρακτικές πρόσληψης",
+          "Δημιουργία συνεργασιών με εργοδότες που δεσμεύονται σε συμπεριληπτικές πρακτικές πρόσληψης",
       },
     ],
     card: {
@@ -57,4 +58,64 @@ export const goalsData = {
         "Οι μαθητές μας αναπτύσσουν πρακτικές δεξιότητες μέσω καθοδηγούμενων εργαστηρίων κεραμικής και πραγματικών επιχειρηματικών εμπειριών",
     },
   },
+
+  pl: {
+    goals: [
+      {
+        number: "1",
+        title: "Rozwój Umiejętności",
+        description:
+          "Doskonalenie zdolności w ceramice i umiejętności przedsiębiorczych wśród uczniów z niepełnosprawnościami",
+      },
+      {
+        number: "2",
+        title: "Szkolenie Nauczycieli",
+        description:
+          "Zapewnienie kompleksowego rozwoju zawodowego dla nauczycieli w zakresie inkluzywnych metod nauczania",
+      },
+      {
+        number: "3",
+        title: "Współpraca z Pracodawcami",
+        description:
+          "Budowanie partnerstw z pracodawcami zaangażowanymi w inkluzywne praktyki zatrudnienia",
+      },
+    ],
+    card: {
+      image: handsOnImage,
+      title: "Praktyczne Nauczanie",
+      description:
+        "Nasi uczniowie rozwijają praktyczne umiejętności poprzez prowadzone warsztaty ceramiczne i doświadczenia w realnym biznesie",
+    },
+  },
+
+  tr: {
+    goals: [
+      {
+        number: "1",
+        title: "Beceri Gelişimi",
+        description:
+          "Engelli öğrenciler arasında seramik el işi ve girişimcilik becerilerini geliştirmek",
+      },
+      {
+        number: "2",
+        title: "Öğretmen Eğitimi",
+        description:
+          "Dahil edici öğretim yöntemlerinde eğitimcilere kapsamlı mesleki gelişim sağlamak",
+      },
+      {
+        number: "3",
+        title: "İşveren Katılımı",
+        description:
+          "Dahil edici işe alım uygulamalarına bağlı işverenlerle ortaklıklar kurmak",
+      },
+    ],
+    card: {
+      image: handsOnImage,
+      title: "Uygulamalı Öğrenme",
+      description:
+        "Öğrencilerimiz rehberli seramik atölyeleri ve gerçek iş deneyimleri aracılığıyla pratik beceriler geliştirir",
+    },
+  },
 };
+
+export default goalsData;

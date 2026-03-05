@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import featureCardsData from "../data/Home/featureCardsData";
-import { goalsData } from "../data/Home/goalsData";
+import goalsData from "../data/Home/goalsData";
 import opportunitiesCardsData from "../data/Home/opportunitiesCardsData";
 import schoolCardsData from "../data/Home/schoolCardsData";
 import ceramicsCardsData from "../data/Home/ceramicsCardsData";

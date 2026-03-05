@@ -1,0 +1,18 @@
+{
+  "hero": {
+    "title": "Kształtowanie Przyszłości poprzez Sztukę Ceramiki",
+    "description": "Międzykulturowa podróż kreatywności i integracji, łącząca uczniów z trzech szkół specjalnych w Europie w celu odkrywania dotykowego języka gliny.",
+    "exploreWorkshops": "Odkryj Warsztaty"
+  },
+  "about": {
+    "title": "Współpraca w Warsztatach Ceramicznych"
+  },
+  "gallery": {
+    "title": "Galeria Uczniów",
+    "description": "Starannie wybrana kolekcja prac wykonanych przez naszych uczniów.",
+    "viewMore": "Zobacz Wszystkie Prace"
+  },
+  "workshopCardBig": {
+    "keyOutcomes": "Kluczowe Rezultaty"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "hero": {
+    "title": "Budowanie przyszłości poprzez rzemiosło, współpracę i włączanie społeczne",
+    "description": "OTESHIP to inicjatywa Erasmus+, która łączy trzy szkoły specjalne w Europie, aby wzmacniać uczniów z niepełnosprawnościami poprzez przedsiębiorczość ceramiczną i ścieżki inkluzyjnego zatrudnienia.",
+    "exploreImpact": "Poznaj nasz wpływ"
+  },
+  "about": {
+    "title": "Nasza historia",
+    "paragraphs": [
+      "OTESHIP narodził się z prostej, ale potężnej obserwacji: uczniowie z niepełnosprawnościami posiadają ogromny potencjał twórczy, który często pozostaje niewykorzystany w tradycyjnych ścieżkach zatrudnienia. Trzy szkoły specjalne w Europie połączyły siły w ramach programu Erasmus+, aby zmienić tę narrację.",
+      "Zauważyliśmy, że sztuka ceramiki oferuje coś więcej niż tylko rzemiosło — zapewnia terapeutyczne, dotykowe i głęboko satysfakcjonujące medium rozwoju umiejętności. Łącząc praktyczne szkolenia ceramiczne z edukacją przedsiębiorczą, tworzymy most między ekspresją artystyczną a niezależnością ekonomiczną.",
+      "Nasza wizja wykracza poza indywidualne historie sukcesu. Budujemy model możliwy do powielania przez szkoły i organizacje w całej Europie, udowadniając, że przedsiębiorczość włączająca jest nie tylko możliwa — jest transformująca. Poprzez współpracę, innowację i niezachwiane zaangażowanie wobec naszych uczniów zmieniamy to, co jest możliwe dla młodych osób z niepełnosprawnościami."
+    ]
+  },
+  "process": {
+    "title": "Za kulisami: Proces"
+  },
+  "impact": {
+    "title": "Wpływ w liczbach"
+  },
+  "schools": {
+    "title": "Poznaj szkoły"
+  },
+  "future": {
+    "title": "Patrząc w przyszłość",
+    "description": "Przyszłość OTESHIP jest jasna i ambitna. Skalujemy nasz model, aby dotrzeć do większej liczby szkół w całej Europie, opracowujemy internetowe moduły szkoleniowe dla nauczycieli oraz tworzymy program certyfikacji w zakresie przedsiębiorczości inkluzyjnej. Nasza wizja obejmuje rozszerzenie linii produktów, budowę cyfrowego marketplace dla ceramiki tworzonej przez uczniów oraz ustanowienie sieci pracodawców zaangażowanych w inkluzyjne zatrudnianie. Razem udowadniamy, że niepełnosprawność nie jest barierą sukcesu — to wyjątkowa siła, która wzbogaca nasze społeczności i gospodarki."
+  },
+  "schoolCardBig": {
+    "learnMore": "Dowiedz się więcej"
+  }
+}

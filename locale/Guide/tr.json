@@ -1,0 +1,72 @@
+{
+  "hero": {
+    "tag": "erasmus+ projesi",
+    "title": "Girişimciliğin Geliştirilmesi ve Teşviki İçin Uygulamalar Rehberi",
+    "description": "Özel Okullarda: Eğitimciler, Veliler ve Paydaşlar İçin Kapsamlı Bir Rehber.",
+    "startReading": "Okumaya Başla"
+  },
+  "preface": {
+    "title": "Önsöz",
+    "paragraphs": [
+      "Okumakta olduğunuz rehber, onaylanmış Erasmus+ Avrupa programı kapsamında yürütülen <b>“Geleneğimiz… girişimciliğimiz!”</b> projesi çerçevesinde hazırlanmıştır.",
+      "Temel fikrimiz, yerel geleneği öğrencilerin becerileriyle birleştirmekti. Seramik ve sanat atölyeleri aracılığıyla öğrenciler yeni teknikler üzerinde çalıştı, fikir alışverişinde bulundu ve her bölgenin kültüründen ilham alan ürünler oluşturdu."
+    ],
+    "bodiesTitle": "İş Birliği Yapılan Kurumlar:",
+    "bodies": [
+      "Ε.Ε.Ε.ΕΚ. Άργους Ορεστικού (Yunanistan)",
+      "Manisa Ozel Egitim Uygulama Okulu (Türkiye)",
+      "Specjalny Ośrodek Szkolno-Wychowawczy (Polonya)"
+    ]
+  },
+  "law": {
+    "title": "Mevzuat ve Haklar",
+    "description": "BM, Engelli Haklarına İlişkin Sözleşmeyi kabul etmiştir. Çalışma hakkı açısından Madde 27, engelli bireylerin diğer vatandaşlarla eşit istihdam hakkına sahip olduğunu kabul eder.",
+    "rightsTitle": "Temel Haklar",
+    "rights": [
+      "İstihdamın her aşamasında ayrımcılığın ortadan kaldırılması.",
+      "Adil ücret ve eşit fırsatların korunması.",
+      "Kariyer rehberliği ve eğitime erişim.",
+      "İş yerlerinin engelli bireylerin ihtiyaçlarına göre uyarlanması."
+    ],
+    "lawCardTitle": "Yunan Mevzuatı",
+    "lawCardDesc": "Anayasaya göre (Madde 21, fıkra 6), engelli bireylerin mesleki entegrasyon hakkı vardır.",
+    "lawTitle": "2643/1998 Sayılı Kanun",
+    "lawDesc": "50’den fazla çalışanı olan işletmeler, çalışanlarının %8’ini engelli bireylerden istihdam etmek zorundadır."
+  },
+  "employment": {
+    "title": "İstihdam Türleri",
+    "puTitle": "Kamu Sektörü",
+    "puDesc": "ASEP aracılığıyla özel puanlama sistemi veya yalnızca engelli bireylere yönelik ilanlar (örneğin 6K/2024).",
+    "puBenefits": ["KEPA Belgesi", "Genel kadrolarda %5 kota"],
+    "prTitle": "Özel Sektör",
+    "prDesc": "Şirketler, KINSEP ve STK’lar. Büyük şirketler için %8 istihdam zorunluluğu.",
+    "prSubtitle": "Entegrasyon Adımları:",
+    "prSteps": ["Beceri eğitimi", "Destekli istihdam", "Pozisyon uyarlaması"],
+    "frTitle": "Serbest Çalışma",
+    "frDesc": "Önemli vergi avantajları ile kendi işini kurma imkânı.",
+    "frBenefits": [
+      "Dayanışma katkı payı muafiyeti",
+      "Vergi indirimleri ve teşvikler"
+    ],
+    "successTitle": "Başarı Örnekleri"
+  },
+  "skills": {
+    "title": "Mesleki Becerilerin Kazanılması"
+  },
+  "business": {
+    "title": "Özel Okullarda Girişimcilik",
+    "description": "Girişimcilik sadece bir faaliyet değil, öğrencilerin topluma aktif katılımını güçlendiren bir mekanizmadır.",
+    "benefitsTitle": "Öğrenciler İçin Faydalar",
+    "stepsTitle": "Uygulama Adımları"
+  },
+  "municipality": {
+    "familyTitle": "Ailenin Rolü",
+    "familyDesc": "Aile, ilk ve en istikrarlı destek unsurudur.",
+    "munTitle": "Belediyenin Rolü",
+    "munDesc": "Belediyeler yerel toplumun ihtiyaçlarını anlar ve yerel ekosistemler oluşturabilir."
+  },
+  "footer": {
+    "text": "Erasmus+ Projesi: \"Geleneğimiz... girişimciliğimiz!\"",
+    "copyright": "© 2024 Tüm Hakları Saklıdır."
+  }
+}

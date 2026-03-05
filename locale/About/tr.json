@@ -1,0 +1,31 @@
+{
+  "hero": {
+    "title": "Zanaat, İş Birliği ve Kapsayıcılık Yoluyla Geleceği İnşa Ediyoruz",
+    "description": "OTESHIP, Avrupa genelinde üç özel eğitim okulunu bir araya getiren ve engelli öğrencileri seramik girişimciliği ile kapsayıcı istihdam yolları aracılığıyla güçlendirmeyi amaçlayan bir Erasmus+ girişimidir.",
+    "exploreImpact": "Etkimizi Keşfedin"
+  },
+  "about": {
+    "title": "Hikayemiz",
+    "paragraphs": [
+      "OTESHIP basit ama güçlü bir gözlemden doğdu: Engelli öğrenciler, geleneksel istihdam yollarında çoğu zaman değerlendirilmeden kalan olağanüstü bir yaratıcı potansiyele sahiptir. Avrupa genelindeki üç özel eğitim okulu, bu anlatıyı değiştirmek için Erasmus+ çerçevesinde bir araya geldi.",
+      "Seramik sanatının yalnızca bir zanaat olmadığını fark ettik — aynı zamanda terapötik, dokunsal ve son derece tatmin edici bir beceri geliştirme aracıdır. Uygulamalı seramik eğitimi ile girişimcilik eğitimini birleştirerek sanatsal ifade ile ekonomik bağımsızlık arasında bir köprü kuruyoruz.",
+      "Vizyonumuz bireysel başarı hikayelerinin ötesine uzanıyor. Avrupa genelindeki okul ve kuruluşlar tarafından benimsenebilecek, tekrarlanabilir bir model inşa ediyoruz ve kapsayıcı girişimciliğin sadece mümkün değil, aynı zamanda dönüştürücü olduğunu kanıtlıyoruz. İş birliği, yenilikçilik ve öğrencilerimize olan sarsılmaz bağlılığımız sayesinde engelli gençler için mümkün olanı yeniden tanımlıyoruz."
+    ]
+  },
+  "process": {
+    "title": "Perde Arkası: Süreç"
+  },
+  "impact": {
+    "title": "Rakamlarla Etki"
+  },
+  "schools": {
+    "title": "Okulları Tanıyın"
+  },
+  "future": {
+    "title": "Geleceğe Bakış",
+    "description": "OTESHIP'in geleceği parlak ve iddialı. Modelimizi Avrupa genelinde daha fazla okula ulaştırmak için ölçeklendiriyor, eğitimciler için çevrim içi eğitim modülleri geliştiriyor ve kapsayıcı girişimcilik için bir sertifikasyon programı oluşturuyoruz. Vizyonumuz, ürün yelpazesini genişletmeyi, öğrenciler tarafından üretilen seramikler için dijital bir pazar yeri kurmayı ve kapsayıcı istihdama bağlı işverenlerden oluşan bir ağ oluşturmayı içeriyor. Birlikte, engelliliğin başarıya engel olmadığını — toplumlarımızı ve ekonomilerimizi zenginleştiren benzersiz bir güç olduğunu kanıtlıyoruz."
+  },
+  "schoolCardBig": {
+    "learnMore": "Daha Fazla Bilgi Edinin"
+  }
+}

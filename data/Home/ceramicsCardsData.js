@@ -30,30 +30,85 @@ const ceramicsCardsData = {
       description: "Beautifully glazed tableware",
     },
   ],
+
   ελ: [
     {
       to: "/ceramics",
       image: cardImage1,
-      title: "Καλούπια Τεχνίτη",
-      description: "Χειροποίητα λειτουργικά μπολ",
+      title: "Χειροποίητα Μπολ",
+      description: "Λειτουργικά μπολ φτιαγμένα στο χέρι",
     },
     {
       to: "/ceramics",
       image: cardImage2,
-      title: "Δεкораτικά Βάζα",
-      description: "Κομψές διακοσμήσεις σπιτιού",
+      title: "Διακοσμητικά Βάζα",
+      description: "Κομψές διακοσμήσεις για το σπίτι",
     },
     {
       to: "/ceramics",
       image: cardImage3,
-      title: "Ποτήρια Καφέ",
-      description: "Ιδανικά για καθημερινή χρήση",
+      title: "Κούπες Καφέ",
+      description: "Ιδανικές για καθημερινή χρήση",
     },
     {
       to: "/ceramics",
       image: cardImage4,
-      title: "Πιάτα Δείπνου",
-      description: "Όμορφα γυαλισμένα σερβίτσια",
+      title: "Πιάτα Φαγητού",
+      description: "Όμορφα εφυαλωμένα επιτραπέζια σκεύη",
+    },
+  ],
+
+  pl: [
+    {
+      to: "/ceramics",
+      image: cardImage1,
+      title: "Ręcznie Robione Miski",
+      description: "Funkcjonalne miski wykonane ręcznie",
+    },
+    {
+      to: "/ceramics",
+      image: cardImage2,
+      title: "Wazony Dekoracyjne",
+      description: "Eleganckie dekoracje do domu",
+    },
+    {
+      to: "/ceramics",
+      image: cardImage3,
+      title: "Kubki do Kawy",
+      description: "Idealne do codziennego użytku",
+    },
+    {
+      to: "/ceramics",
+      image: cardImage4,
+      title: "Talerze Obiadowe",
+      description: "Pięknie szkliwiona zastawa stołowa",
+    },
+  ],
+
+  tr: [
+    {
+      to: "/ceramics",
+      image: cardImage1,
+      title: "El Yapımı Kaseler",
+      description: "El yapımı fonksiyonel kaseler",
+    },
+    {
+      to: "/ceramics",
+      image: cardImage2,
+      title: "Dekoratif Vazolar",
+      description: "Zarif ev dekorasyonları",
+    },
+    {
+      to: "/ceramics",
+      image: cardImage3,
+      title: "Kahve Kupaları",
+      description: "Günlük kullanım için ideal",
+    },
+    {
+      to: "/ceramics",
+      image: cardImage4,
+      title: "Yemek Tabakları",
+      description: "Güzel sırlanmış sofra takımları",
     },
   ],
 };

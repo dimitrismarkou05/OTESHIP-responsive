@@ -1,0 +1,76 @@
+{
+  "hero": {
+    "tag": "projekt erasmus+",
+    "title": "Przewodnik po praktykach rozwoju i promowania przedsiębiorczości",
+    "description": "W szkołach specjalnych: kompleksowy przewodnik dla nauczycieli, rodziców i interesariuszy.",
+    "startReading": "Rozpocznij czytanie"
+  },
+  "preface": {
+    "title": "Przedmowa",
+    "paragraphs": [
+      "Przewodnik, który czytasz, został opracowany w ramach realizacji zatwierdzonego programu europejskiego Erasmus+ pt. <b>„Nasza tradycja… nasza przedsiębiorczość!”</b>.",
+      "Naszym głównym pomysłem było połączenie lokalnej tradycji z umiejętnościami uczniów. Poprzez warsztaty ceramiczne i artystyczne uczniowie pracowali nad nowymi technikami, wymieniali się pomysłami i tworzyli produkty inspirowane kulturą każdego regionu."
+    ],
+    "bodiesTitle": "Instytucje współpracujące:",
+    "bodies": [
+      "Ε.Ε.Ε.ΕΚ. Άργους Ορεστικού (Grecja)",
+      "Manisa Ozel Egitim Uygulama Okulu (Turcja)",
+      "Specjalny Ośrodek Szkolno-Wychowawczy (Polska)"
+    ]
+  },
+  "law": {
+    "title": "Prawo i prawa",
+    "description": "ONZ przyjęła Konwencję o prawach osób z niepełnosprawnościami. W zakresie pracy artykuł 27 uznaje, że osoby z niepełnosprawnościami mają takie samo prawo do zatrudnienia jak każdy inny obywatel.",
+    "rightsTitle": "Podstawowe prawa",
+    "rights": [
+      "Eliminacja dyskryminacji na każdym etapie zatrudnienia.",
+      "Ochrona sprawiedliwego wynagrodzenia i równych szans.",
+      "Dostęp do doradztwa zawodowego i szkoleń.",
+      "Dostosowanie miejsc pracy do potrzeb osób z niepełnosprawnościami."
+    ],
+    "lawCardTitle": "Prawo greckie",
+    "lawCardDesc": "Zgodnie z Konstytucją (art. 21 ust. 6) osoby z niepełnosprawnościami mają prawo do integracji zawodowej.",
+    "lawTitle": "Ustawa 2643/1998",
+    "lawDesc": "Przedsiębiorstwa zatrudniające ponad 50 pracowników są zobowiązane do zatrudniania 8% osób z niepełnosprawnościami."
+  },
+  "employment": {
+    "title": "Rodzaje zatrudnienia",
+    "puTitle": "Sektor publiczny",
+    "puDesc": "Rekrutacja poprzez ASEP ze specjalnymi punktami lub ogłoszenia wyłącznie dla osób z niepełnosprawnościami (np. 6K/2024).",
+    "puBenefits": ["Certyfikat KEPA", "5% limit w ogólnych stanowiskach"],
+    "prTitle": "Sektor prywatny",
+    "prDesc": "Firmy, KINSEP i NGO. 8% obowiązek zatrudnienia w dużych przedsiębiorstwach.",
+    "prSubtitle": "Kroki integracji:",
+    "prSteps": [
+      "Szkolenie umiejętności",
+      "Zatrudnienie wspomagane",
+      "Dostosowanie stanowiska"
+    ],
+    "frTitle": "Samozatrudnienie",
+    "frDesc": "Możliwość prowadzenia własnej działalności z istotnymi ulgami podatkowymi.",
+    "frBenefits": [
+      "Zwolnienie ze składki solidarnościowej",
+      "Ulgi i odliczenia podatkowe"
+    ],
+    "successTitle": "Przykłady sukcesu"
+  },
+  "skills": {
+    "title": "Nabywanie umiejętności zawodowych"
+  },
+  "business": {
+    "title": "Przedsiębiorczość w szkołach specjalnych",
+    "description": "Przedsiębiorczość to nie tylko działanie, ale mechanizm wzmacniający aktywny udział uczniów w społeczeństwie.",
+    "benefitsTitle": "Korzyści dla uczniów",
+    "stepsTitle": "Etapy wdrażania"
+  },
+  "municipality": {
+    "familyTitle": "Rola rodziny",
+    "familyDesc": "Rodzina jest pierwszym i najbardziej stabilnym filarem wsparcia.",
+    "munTitle": "Rola gminy",
+    "munDesc": "Gminy rozumieją potrzeby lokalnej społeczności i mogą tworzyć lokalne ekosystemy."
+  },
+  "footer": {
+    "text": "Projekt Erasmus+: \"Nasza tradycja... nasza przedsiębiorczość!\"",
+    "copyright": "© 2024 Wszelkie prawa zastrzeżone."
+  }
+}
