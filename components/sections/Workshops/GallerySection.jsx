@@ -32,7 +32,7 @@ const GallerySection = () => {
           >
             <Link
               to="/gallery"
-              className="text-(--color-primary) text-sm font-semibold no-underline whitespace-nowrap inline-flex items-center justify-center hover-anim"
+              className="text-(--color-primary) dark:text-(--color-primary2) text-sm font-semibold no-underline whitespace-nowrap inline-flex items-center justify-center hover-anim"
               style={{ "--hover-color": "var(--color-primary)" }}
             >
               {t("gallery.viewMore")}

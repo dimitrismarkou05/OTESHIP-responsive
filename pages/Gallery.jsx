@@ -52,7 +52,7 @@ const Gallery = () => {
   };
 
   return (
-    <div className="bg-(--color-bg-primary) w-full">
+    <div className="bg-(--color-bg-primary) dark:bg-(--color-dark-text) transition-colors duration-200 w-full">
       <div className="w-full p-16">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col gap-8 justify-evenly items-center flex-1 w-full">

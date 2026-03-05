@@ -35,7 +35,7 @@ const WorkshopCardBig = ({
           {description}
         </p>
         <div className="flex flex-col items-start gap-2">
-          <h1 className="text-sm font-semibold text-(--color-primary) dark:text-white uppercase">
+          <h1 className="text-sm font-semibold text-(--color-primary) dark:text-(--color-primary2) uppercase">
             {t("workshopCardBig.keyOutcomes")}
           </h1>
           <div className="flex flex-col items-start gap-2">

@@ -11,8 +11,8 @@ export default function Navbar() {
   const languages = [
     { code: "en", name: "English", flag: "us" },
     { code: "ελ", name: "Ελληνικά", flag: "gr" },
-    { code: "tr", name: "Türkçe", flag: "tr" },
     { code: "pl", name: "Polski", flag: "pl" },
+    { code: "tr", name: "Türkçe", flag: "tr" },
   ];
 
   // Close dropdown when clicking outside
