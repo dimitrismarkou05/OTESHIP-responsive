@@ -25,21 +25,13 @@ const SchoolsSection = () => {
           </h1>
         </div>
 
-        {/* Layout rules applied: 
-          - Default & xs (< 640px): flex-col (with max-w cap to control image bleed)
-          - sm to md: 4 col grid (Math trick centers the 3rd card)
-          - md to lg: Switches back to flex and stacks vertically (flex-col)
-          - lg and up: Expands to horizontal row (flex-row) with items-stretch
-        */}
-        <div className="flex flex-col sm:grid sm:grid-cols-4 md:flex md:flex-col lg:flex-row items-stretch justify-center gap-4 md:gap-5 lg:gap-6 xl:gap-8 max-w-7xl w-full">
+        {/* Added md:max-w-[80%] and lg:max-w-7xl here */}
+        <div className="flex flex-col sm:grid sm:grid-cols-4 md:flex md:flex-col lg:flex-row items-stretch justify-center gap-4 md:gap-5 lg:gap-6 xl:gap-8 w-full max-w-7xl md:max-w-[80%] lg:max-w-7xl">
           {schoolCardsData.map((school, index) => (
             <div
               key={index}
-              // Added lg:flex-1 so the 3 cards divide the flex-row equally
               className={`w-full max-w-sm mx-auto sm:max-w-none flex justify-center lg:flex-1 ${
-                index === 2
-                  ? "sm:col-span-2 sm:col-start-2" // Centers the 3rd card on sm
-                  : "sm:col-span-2" // Standard 50% width on sm
+                index === 2 ? "sm:col-span-2 sm:col-start-2" : "sm:col-span-2"
               }`}
             >
               <SchoolCard
@@ -50,7 +42,6 @@ const SchoolsSection = () => {
                 country={school.country}
                 location={school.location}
                 aosDelay={300 + index * 150}
-                // Added h-full and w-full so the card fills the stretched wrapper
                 className="h-full w-full"
               />
             </div>
