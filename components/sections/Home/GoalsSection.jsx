@@ -17,9 +17,8 @@ const GoalsSection = () => {
           title={t("goals.title")}
           description={t("goals.description")}
         />
-
-        <div className="flex flex-col md:flex-row items-stretch justify-center gap-3 xs:gap-4 md:gap-5 lg:gap-6 xl:gap-8 max-w-7xl">
-          <div className="flex flex-col justify-evenly flex-1 gap-4 md:gap-6 lg:gap-7 xl:gap-8">
+        <div className="flex flex-col md:flex-row items-stretch justify-center gap-3 xs:gap-4 md:gap-5 lg:gap-6 xl:gap-8 max-w-7xl sm:max-w-lg md:max-w-7xl w-full">
+          <div className="flex flex-col justify-evenly flex-1 gap-4 md:gap-6 lg:gap-7 xl:gap-8 w-full">
             {goalsData.goals.map((goal, index) => (
               <div
                 ref={index === 0 ? firstGoalRef : null}
