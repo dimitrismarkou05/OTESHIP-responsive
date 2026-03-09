@@ -4,12 +4,12 @@ const FeatureCard = ({ icon, title, description, to, aosDelay, index }) => {
   const cardContent = (
     <>
       <i
-        className={`${icon} text-base xs:text-lg md:text-xl lg:text-2xl xl:text-3xl text-(--color-primary) dark:text-(--color-primary2) mb-2`}
+        className={`${icon} text-base md:text-lg lg:text-xl text-(--color-primary) dark:text-(--color-primary2) mb-2`}
       ></i>
-      <h1 className="text-sm xs:text-base md:text-lg xl:text-xl font-bold text-(--color-dark-text) dark:text-white w-full">
+      <h1 className="text-sm md:text-base lg:text-lg font-bold text-(--color-dark-text) dark:text-white w-full">
         {title}
       </h1>
-      <p className="w-full text-start text-xs md:text-sm xl:text-base text-(--color-bg-dark) dark:text-(--color-bg-primary)">
+      <p className="w-full text-start text-xs md:text-sm lg:text-base text-(--color-bg-dark) dark:text-(--color-bg-primary)">
         {description}
       </p>
     </>
