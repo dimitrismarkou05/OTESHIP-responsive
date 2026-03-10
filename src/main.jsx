@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router";
 import Index from "./index";
 import "./index.css";
 import "./locale";
+import { AccessibilityProvider } from "./context/AccessibilityContext";
 
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
@@ -12,7 +13,9 @@ if ("scrollRestoration" in history) {
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Index />
+      <AccessibilityProvider>
+        <Index />
+      </AccessibilityProvider>
     </BrowserRouter>
   </React.StrictMode>,
 );

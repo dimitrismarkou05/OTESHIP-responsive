@@ -5,6 +5,22 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @import "aos/dist/aos.css";
 
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/ttf/OpenDyslexic-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/ttf/OpenDyslexic-Bold.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
 :root {
   --color-primary: #2563eb;
   --color-primary-hover: #1c4bc7;
@@ -69,4 +85,91 @@ html {
 
 body {
   @apply bg-(--color-dark-text) dark:bg-black transition-colors duration-200;
+}
+
+.font-size-large {
+  font-size: 120%;
+}
+
+.font-size-xlarge {
+  font-size: 150%;
+}
+
+/* High Contrast Mode */
+.contrast-high {
+  --color-primary: #0000ff !important;
+  --color-primary-hover: #0000cc !important;
+  --color-primary2: #0000ff !important;
+  --color-primary2-hover: #0000cc !important;
+  --color-dark-text: #000000 !important;
+  --color-bg-primary: #ffffff !important;
+  --color-bg-dark: #000000 !important;
+}
+
+.contrast-high body {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.contrast-high .dark body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Ensure all text meets contrast requirements */
+.contrast-high p,
+.contrast-high h1,
+.contrast-high h2,
+.contrast-high h3,
+.contrast-high span:not([class*="text-"]) {
+  color: inherit !important;
+}
+
+/* Line Spacing */
+.line-spacing-wide p,
+.line-spacing-wide li,
+.line-spacing-wide .prose {
+  line-height: 2 !important;
+}
+
+/* Reduced Motion */
+.motion-reduced *,
+.motion-reduced *::before,
+.motion-reduced *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Dyslexia-Friendly Font */
+.dyslexia-enabled body,
+.dyslexia-enabled p,
+.dyslexia-enabled h1,
+.dyslexia-enabled h2,
+.dyslexia-enabled h3,
+.dyslexia-enabled span,
+.dyslexia-enabled a,
+.dyslexia-enabled button,
+.dyslexia-enabled input,
+.dyslexia-enabled textarea {
+  font-family:
+    "OpenDyslexic", "Comic Sans MS", "Lexie Readable", sans-serif !important;
+  letter-spacing: 0.35px;
+  word-spacing: 1.5px;
+}
+
+/* Highlight Links */
+.links-highlighted a:not([class*="no-highlight"]),
+.links-highlighted button:not([class*="no-highlight"]) {
+  text-decoration: underline !important;
+  text-decoration-color: var(--color-primary) !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 4px !important;
+}
+
+.links-highlighted a:hover,
+.links-highlighted button:hover {
+  background-color: rgba(37, 99, 235, 0.1) !important;
+  border-radius: 4px;
 }

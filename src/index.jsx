@@ -14,6 +14,7 @@ import { useEffect, useLayoutEffect } from "react"; // Add useLayoutEffect
 import ScrollToTopButton from "./components/layouts/ScrollToTopButton";
 import SideBar from "./components/sections/Guide/SideBar";
 import Gallery from "./pages/Gallery";
+import AccessibilityMenu from "./components/layouts/AccessibilityMenu";
 
 export default function Index() {
   const location = useLocation();
@@ -48,7 +49,7 @@ export default function Index() {
       <div className="flex flex-col min-h-screen bg-[#F8FAFC] dark:bg-[#0b101a]">
         <Navbar />
         <ScrollToTopButton />
-
+        <AccessibilityMenu /> {/* Add this */}
         {/* Wrapper that creates the centered region */}
         <div className="max-w-7xl mx-auto w-full relative flex-1">
           {/* Two-column layout within centered region */}
@@ -80,6 +81,7 @@ export default function Index() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <ScrollToTopButton />
+      <AccessibilityMenu /> {/* Add this */}
       <main className="grow flex">
         <Routes>
           <Route path="/" element={<Home />} />
