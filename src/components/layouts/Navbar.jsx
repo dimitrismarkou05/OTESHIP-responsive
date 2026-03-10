@@ -45,7 +45,7 @@ export default function Navbar() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isMobileMenuOpen]); // Add isMobileMenuOpen to dependencies
+  }, [isMobileMenuOpen]);
 
   const toggleLanguageDropdown = () => {
     setIsLanguageOpen(!isLanguageOpen);
@@ -131,7 +131,8 @@ export default function Navbar() {
       {/* Right Section */}
       <div className="flex flex-row justify-end items-center space-x-2 sm:space-x-2.5 md:space-x-2.5 lg:space-x-2.5 xl:space-x-2.5 flex-1 md:flex-none xl:flex-1 max-w-none md:max-w-fit xl:max-w-none">
         {/* Desktop Theme & Language Container */}
-        <div className="hidden xs:flex flex-row items-center space-x-2 sm:space-x-2.5">
+        {/* Changed from hidden xs:flex to hidden md:flex */}
+        <div className="hidden md:flex flex-row items-center space-x-2 sm:space-x-2.5">
           <ThemeToggle />
 
           <div className="relative" ref={dropdownRef}>
@@ -192,7 +193,8 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Hamburger Button with invisible touch target */}
-        <div className="relative xs:hidden flex items-center justify-center w-10 h-10 shrink-0">
+        {/* Changed from xs:hidden to md:hidden */}
+        <div className="relative md:hidden flex items-center justify-center w-10 h-10 shrink-0">
           <button
             ref={hamburgerButtonRef}
             className="peer absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 z-10 cursor-pointer rounded-md focus:outline-none"
@@ -228,9 +230,10 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu Dropdown */}
+      {/* Changed from xs:hidden to md:hidden */}
       <div
         ref={mobileMenuRef}
-        className={`absolute top-full left-0 w-full bg-white dark:bg-(--color-bg-dark) shadow-md border-t border-gray-200 dark:border-(--color-divider) [transition:all_400ms,background-color_200ms,color_200ms,border-color_200ms] ease-in-out xs:hidden overflow-hidden ${
+        className={`absolute top-full left-0 w-full bg-white dark:bg-(--color-bg-dark) shadow-md border-t border-gray-200 dark:border-(--color-divider) [transition:all_400ms,background-color_200ms,color_200ms,border-color_200ms] ease-in-out md:hidden overflow-hidden ${
           isMobileMenuOpen
             ? "max-h-125 opacity-100 py-4"
             : "max-h-0 opacity-0 py-0"
@@ -239,7 +242,6 @@ export default function Navbar() {
         <div className="flex flex-col px-6 space-y-6">
           {/* Top: Theme & Language */}
           <div className="flex flex-row justify-between items-center border-b border-gray-200 dark:border-(--color-divider) pb-4 transition-colors duration-200">
-            {/* Added variant prop here! */}
             <ThemeToggle variant="menu" />
 
             <div className="flex space-x-2 bg-[#eceef0] dark:bg-(--color-dark2-text) p-1 rounded-md transition-colors duration-200">
