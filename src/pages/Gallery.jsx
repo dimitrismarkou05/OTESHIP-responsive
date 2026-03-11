@@ -1,100 +1,71 @@
-// Gallery.jsx - Fixed version with proper dynamic imports
-import React, { useState, useEffect, useRef, useCallback } from "react";
+// Gallery.jsx
+import React, { useState, useEffect } from "react";
 import { loadWorkshopImages } from "../data/Workshops/workshopImages";
 import { useTranslation } from "react-i18next";
 
+// Isolate the loading state to the individual image to prevent parent re-renders
+const GalleryImage = ({ src, index, spanClass, responsiveClasses }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  return (
+    <div
+      data-index={index}
+      data-aos="fade-down"
+      data-aos-delay={300 + index * 50}
+      data-aos-offset="0"
+      className={`relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-gray-200 dark:bg-gray-800 ${spanClass} ${responsiveClasses}`}
+      style={{
+        minHeight: "200px",
+        // Tells the browser to skip layout/painting if this is off-screen
+        contentVisibility: "auto",
+        containIntrinsicSize: "200px", // Gives the browser a placeholder size
+      }}
+    >
+      {!isLoaded && !hasError && (
+        <div className="absolute inset-0 bg-gray-300 dark:bg-gray-700 animate-pulse" />
+      )}
+
+      {!hasError ? (
+        <img
+          src={src}
+          alt={`Gallery image ${index + 1}`}
+          loading="lazy"
+          decoding="async" /* <--- THIS IS THE MAGIC BULLET FOR THE FREEZES */
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          // Adding a fetchpriority hint for above-the-fold vs below-the-fold
+          fetchPriority={index < 4 ? "high" : "low"}
+          onLoad={() => setIsLoaded(true)}
+          onError={() => setHasError(true)}
+        />
+      ) : (
+        <div className="flex items-center justify-center h-full text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800">
+          Image not available
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Gallery = () => {
   const { t } = useTranslation("gallery");
-  const [loadedImages, setLoadedImages] = useState(new Set());
   const [images, setImages] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const observerRef = useRef(null);
 
-  // Load images dynamically
   useEffect(() => {
-    const loadImages = async () => {
-      try {
-        setIsLoading(true);
-        const workshopImages = await loadWorkshopImages();
-        // Extract just the src URLs
-        const imageUrls = workshopImages.map((img) => img.src);
-        setImages(imageUrls);
-      } catch (error) {
-        console.error("Failed to load workshop images:", error);
-      } finally {
-        setIsLoading(false);
-      }
+    const fetchImages = async () => {
+      const workshopImages = await loadWorkshopImages();
+      setImages(workshopImages.map((img) => img.src));
     };
-
-    loadImages();
-  }, []);
-
-  // Set up intersection observer for lazy loading
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = entry.target.dataset.index;
-            if (index && !loadedImages.has(index)) {
-              setLoadedImages((prev) => new Set(prev).add(index));
-              // Unobserve after loading to prevent unnecessary calls
-              observerRef.current?.unobserve(entry.target);
-            }
-          }
-        });
-      },
-      {
-        rootMargin: "200px",
-        threshold: 0.1,
-      },
-    );
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
-  }, []); // Empty dependency array - observer only created once
-
-  const handleImageLoad = useCallback((index) => {
-    const container = document.querySelector(`[data-index="${index}"]`);
-    if (container) {
-      container.classList.add("image-fully-loaded");
-    }
-  }, []);
-
-  const handleImageError = useCallback((index, e) => {
-    console.error(`Failed to load image at index ${index}:`, e);
-    // Set a fallback background color instead of broken image
-    const container = document.querySelector(`[data-index="${index}"]`);
-    if (container) {
-      container.style.backgroundColor = "#e5e7eb";
-      container.innerHTML =
-        '<div class="flex items-center justify-center h-full text-gray-400">Image not available</div>';
-    }
+    fetchImages();
   }, []);
 
   const getSpanClass = (index) => {
-    let spanClass = "col-span-1 row-span-1";
-    if (index === 0) spanClass = "col-span-2 row-span-2";
-    if (index === 4) spanClass = "col-span-1 row-span-2";
-    return spanClass;
+    if (index === 0) return "col-span-2 row-span-2";
+    if (index === 4) return "col-span-1 row-span-2";
+    return "col-span-1 row-span-1";
   };
-
-  if (isLoading) {
-    return (
-      <div className="bg-(--color-bg-primary) w-full">
-        <div className="w-full p-16">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex justify-center items-center min-h-100">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="bg-(--color-bg-primary) w-full">
@@ -112,49 +83,19 @@ const Gallery = () => {
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[200px] gap-4 grid-flow-dense">
                 {images.slice(0, 10).map((image, index) => {
                   const spanClass = getSpanClass(index);
-                  const isLoaded = loadedImages.has(String(index));
-                  const imageIndex = String(index);
-
                   const responsiveClasses = `
                     ${index === 8 ? "lg:col-span-2" : ""} 
                     ${index === 9 ? "md:col-span-2 lg:col-span-2" : ""}
                   `;
 
                   return (
-                    <div
+                    <GalleryImage
                       key={index}
-                      ref={(el) => {
-                        if (
-                          el &&
-                          observerRef.current &&
-                          !loadedImages.has(imageIndex)
-                        ) {
-                          observerRef.current.observe(el);
-                        }
-                      }}
-                      data-index={index}
-                      data-aos="fade-down"
-                      data-aos-delay={300 + index * 150}
-                      data-aos-offset="0"
-                      className={`relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${spanClass} ${responsiveClasses}`}
-                      style={{
-                        backgroundColor: "#f3f4f6",
-                        minHeight: "200px",
-                      }}
-                    >
-                      {isLoaded ? (
-                        <img
-                          src={image}
-                          alt={`Gallery image ${index + 1}`}
-                          className="absolute inset-0 w-full h-full object-cover"
-                          onLoad={() => handleImageLoad(index)}
-                          onError={(e) => handleImageError(index, e)}
-                          loading="lazy"
-                        />
-                      ) : (
-                        <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse" />
-                      )}
-                    </div>
+                      src={image}
+                      index={index}
+                      spanClass={spanClass}
+                      responsiveClasses={responsiveClasses}
+                    />
                   );
                 })}
               </div>

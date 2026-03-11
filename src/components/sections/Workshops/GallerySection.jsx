@@ -1,18 +1,75 @@
+// GallerySection.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import { loadWorkshopImages } from "../../../data/Workshops/workshopImages";
 
+// Isolated carousel image card with skeleton logic
+const CarouselCard = ({ src, index, isVisible, style }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  return (
+    <div
+      className={`w-full h-64 transition-opacity duration-300 relative ${
+        isVisible
+          ? "opacity-100 z-10 pointer-events-auto"
+          : "opacity-0 z-0 pointer-events-none"
+      }`}
+      style={style}
+    >
+      <Link
+        to="/gallery"
+        // Fixed h-full here instead of h-64 so it respects the parent's fixed height
+        className="block w-full h-full overflow-hidden rounded-md drop-shadow-md relative bg-gray-200 dark:bg-gray-800"
+        data-aos="fade-down"
+        data-aos-delay={300 + index * 150} // v1 delays restored
+      >
+        <div
+          className={`absolute inset-0 bg-gray-300 dark:bg-gray-700 animate-pulse transition-opacity duration-500 ease-in-out ${
+            isLoaded ? "opacity-0" : "opacity-100"
+          }`}
+        />
+
+        {src && !hasError && (
+          <img
+            src={src}
+            alt={`Gallery image ${index + 1}`}
+            loading="lazy"
+            decoding="async"
+            // v1 hover scaling restored
+            className={`absolute inset-0 w-full h-full object-cover rounded-lg transition-all duration-400 ease-in-out hover:scale-105 ${
+              isLoaded ? "opacity-100" : "opacity-0"
+            }`}
+            onLoad={() => setIsLoaded(true)}
+            onError={() => setHasError(true)}
+          />
+        )}
+
+        {hasError && (
+          <div className="absolute inset-0 flex items-center justify-center text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800">
+            Image not available
+          </div>
+        )}
+      </Link>
+    </div>
+  );
+};
+
 const GallerySection = () => {
   const { t } = useTranslation("workshops");
-  const [randomImages, setRandomImages] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
-  // --- Carousel States ---
+  const [randomImages, setRandomImages] = useState(Array(6).fill(null));
   const [currentPage, setCurrentPage] = useState(0);
-  const [cardsPerPage, setCardsPerPage] = useState(3);
 
-  // --- Touch Tracking States ---
+  const [cardsPerPage, setCardsPerPage] = useState(() => {
+    if (typeof window !== "undefined") {
+      if (window.innerWidth < 640) return 1;
+      if (window.innerWidth < 1024) return 2;
+    }
+    return 3;
+  });
+
   const [touchStartX, setTouchStartX] = useState(null);
   const [touchStartY, setTouchStartY] = useState(null);
   const [touchEndX, setTouchEndX] = useState(null);
@@ -22,60 +79,39 @@ const GallerySection = () => {
   const totalCards = randomImages.length;
   const totalPages = Math.ceil(totalCards / cardsPerPage) || 1;
 
-  // Fetch images
   useEffect(() => {
     const loadImages = async () => {
-      try {
-        setIsLoading(true);
-        const images = await loadWorkshopImages();
-        const imageUrls = images.map((img) => img.src);
-        const shuffled = [...imageUrls].sort(() => 0.5 - Math.random());
-        // Load 6 images instead of 3
-        setRandomImages(shuffled.slice(0, 6));
-      } catch (error) {
-        console.error("Failed to load workshop images:", error);
-      } finally {
-        setIsLoading(false);
-      }
+      const images = await loadWorkshopImages();
+      const imageUrls = images.map((img) => img.src);
+      const shuffled = [...imageUrls].sort(() => 0.5 - Math.random());
+      setRandomImages(shuffled.slice(0, 6));
     };
 
     loadImages();
   }, []);
 
-  // Update cards per page based on window width
   useEffect(() => {
     const updateCardsPerPage = () => {
       const width = window.innerWidth;
-      if (width < 640) {
-        setCardsPerPage(1);
-      } else if (width < 1024) {
-        setCardsPerPage(2);
-      } else {
-        setCardsPerPage(3);
-      }
+      if (width < 640) setCardsPerPage(1);
+      else if (width < 1024) setCardsPerPage(2);
+      else setCardsPerPage(3);
     };
 
-    updateCardsPerPage();
     window.addEventListener("resize", updateCardsPerPage);
     return () => window.removeEventListener("resize", updateCardsPerPage);
   }, []);
 
-  // Reset page if bounds change
   useEffect(() => {
     if (totalCards > 0 && currentPage >= totalPages) {
       setCurrentPage(0);
     }
   }, [cardsPerPage, currentPage, totalPages, totalCards]);
 
-  const handlePrev = () => {
-    setCurrentPage((prev) => Math.max(0, prev - 1));
-  };
-
-  const handleNext = () => {
+  const handlePrev = () => setCurrentPage((prev) => Math.max(0, prev - 1));
+  const handleNext = () =>
     setCurrentPage((prev) => Math.min(totalPages - 1, prev + 1));
-  };
 
-  // --- Touch Handlers ---
   const onTouchStart = (e) => {
     setTouchEndX(null);
     setTouchEndY(null);
@@ -94,50 +130,35 @@ const GallerySection = () => {
     const distanceX = touchStartX - touchEndX;
     const distanceY = touchStartY - touchEndY;
 
-    if (Math.abs(distanceY) > Math.abs(distanceX)) {
-      return;
-    }
+    if (Math.abs(distanceY) > Math.abs(distanceX)) return;
 
-    const isLeftSwipe = distanceX > minSwipeDistance;
-    const isRightSwipe = distanceX < -minSwipeDistance;
-
-    if (isLeftSwipe && currentPage < totalPages - 1) {
+    if (distanceX > minSwipeDistance && currentPage < totalPages - 1)
       handleNext();
-    }
-    if (isRightSwipe && currentPage > 0) {
-      handlePrev();
-    }
+    if (distanceX < -minSwipeDistance && currentPage > 0) handlePrev();
   };
-
-  if (isLoading) {
-    return (
-      <section className="bg-white dark:bg-(--color-dark-text) p-8 xs:p-10 md:p-15 lg:p-16 xl:p-20 transition-colors duration-200">
-        <div className="flex justify-center items-center min-h-100 max-w-7xl mx-auto">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 dark:border-white"></div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section className="bg-white dark:bg-(--color-dark-text) p-8 xs:p-10 md:p-15 lg:p-16 xl:p-20 transition-colors duration-200">
-      <div
-        className="flex flex-col justify-between items-start gap-2 md:gap-3 lg:gap-4 xl:gap-6 max-w-7xl mx-auto w-full"
-        data-aos="fade-up"
-      >
-        <h1 className="font-bold text-lg md:text-2xl lg:text-3xl xl:text-4xl text-(--color-dark-text) dark:text-white text-center">
+      {/* Removed data-aos="fade-up" from this wrapper so it stops stretching your document */}
+      <div className="flex flex-col justify-between items-start gap-2 md:gap-3 lg:gap-4 xl:gap-6 max-w-7xl mx-auto w-full">
+        {/* Placed AOS directly on the inner elements for the exact same visual effect */}
+        <h1
+          className="font-bold text-lg md:text-2xl lg:text-3xl xl:text-4xl text-(--color-dark-text) dark:text-white text-center"
+          data-aos="fade-up"
+        >
           {t("gallery.title")}
         </h1>
-        <div className="flex flex-col md:flex-row w-full items-start md:items-end gap-4 xs:gap-5 md:gap-6 justify-between">
+
+        <div
+          className="flex flex-col md:flex-row w-full items-start md:items-end gap-4 xs:gap-5 md:gap-6 justify-between"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           <p className="text-sm md:text-base xl:text-lg text-(--color-bg-dark) dark:text-(--color-bg-primary)">
             {t("gallery.description")}
           </p>
 
-          <div
-            className="text-start md:text-center h-fit mt-2 xs:mt-0"
-            data-aos="fade-down"
-            data-aos-delay="300"
-          >
+          <div className="text-start md:text-center h-fit mt-2 xs:mt-0">
             <Link
               to="/gallery"
               className="text-(--color-primary) text-xs md:text-sm font-semibold no-underline whitespace-nowrap inline-flex items-center justify-center hover-anim"
@@ -148,56 +169,38 @@ const GallerySection = () => {
           </div>
         </div>
 
-        {/* --- Carousel Implementation --- */}
-        <div className="w-full">
+        {/* Re-added overflow-hidden & pb-4 ONLY to the track to catch AOS bleed from the cards, protecting the document */}
+        <div className="w-full overflow-hidden pb-4">
           <div
             className="grid gap-4 md:gap-5 lg:gap-6 transition-all duration-300 w-full touch-pan-y"
             style={{
               gridTemplateColumns: `repeat(${cardsPerPage}, minmax(0, 1fr))`,
+              height: "256px", // Grid track height strictly locked
             }}
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
           >
-            {randomImages.map((image, index) => (
-              <div
-                key={index}
-                className={`w-full h-full flex flex-col transition-all duration-300 ${
-                  index >= currentPage * cardsPerPage &&
-                  index < (currentPage + 1) * cardsPerPage
-                    ? "opacity-100 visible"
-                    : "opacity-0 invisible h-0 overflow-hidden"
-                }`}
-                style={{
-                  gridRow: "1",
-                  gridColumn: `${(index % cardsPerPage) + 1} / span 1`,
-                }}
-              >
-                <Link
-                  to="/gallery"
-                  className="block w-full h-64 overflow-hidden inset-0 rounded-md drop-shadow-md"
-                  data-aos="fade-down"
-                  data-aos-delay={300 + index * 150}
-                >
-                  <img
-                    src={image}
-                    alt={`Gallery image ${index + 1}`}
-                    className="w-full h-full object-cover rounded-lg transition-transform duration-400 ease-in-out hover:scale-105"
-                    loading="lazy"
-                    onError={(e) => {
-                      console.error(`Failed to load image: ${image}`);
-                      e.target.style.display = "none";
-                      e.target.parentElement.style.backgroundColor = "#e5e7eb";
-                      e.target.parentElement.innerHTML =
-                        '<div class="flex items-center justify-center h-full text-gray-400">Image not available</div>';
-                    }}
-                  />
-                </Link>
-              </div>
-            ))}
+            {randomImages.map((image, index) => {
+              const isVisible =
+                index >= currentPage * cardsPerPage &&
+                index < (currentPage + 1) * cardsPerPage;
+
+              return (
+                <CarouselCard
+                  key={index}
+                  src={image}
+                  index={index}
+                  isVisible={isVisible}
+                  style={{
+                    gridRow: "1",
+                    gridColumn: `${(index % cardsPerPage) + 1} / span 1`,
+                  }}
+                />
+              );
+            })}
           </div>
 
-          {/* Navigation Controls */}
           {totalPages > 1 && (
             <div className="flex flex-col items-center gap-4 mt-8 md:mt-10 lg:mt-12">
               <div className="flex gap-2">
@@ -205,7 +208,7 @@ const GallerySection = () => {
                   <button
                     key={index}
                     onClick={() => setCurrentPage(index)}
-                    className={`h-2 rounded-full transition-all ${
+                    className={`h-2 rounded-full transition-all duration-300 ${
                       currentPage === index
                         ? "w-6 bg-blue-600"
                         : "w-2 bg-gray-300 dark:bg-gray-600 hover:bg-gray-400"
