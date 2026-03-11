@@ -233,7 +233,7 @@ export default function Navbar() {
       {/* Changed from xs:hidden to md:hidden */}
       <div
         ref={mobileMenuRef}
-        className={`z-500 absolute top-full left-0 w-full bg-white dark:bg-(--color-bg-dark) shadow-md border-t border-gray-200 dark:border-(--color-divider) [transition:all_300ms,background-color_200ms,color_200ms,border-color_200ms] ease-in-out md:hidden overflow-hidden ${
+        className={`absolute top-full left-0 w-full bg-white dark:bg-(--color-bg-dark) shadow-md border-t border-gray-200 dark:border-(--color-divider) [transition:all_300ms,background-color_200ms,color_200ms,border-color_200ms] ease-in-out md:hidden overflow-hidden ${
           isMobileMenuOpen
             ? "max-h-125 opacity-100 py-4"
             : "max-h-0 opacity-0 py-0"

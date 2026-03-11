@@ -13,8 +13,8 @@ const CarouselCard = ({ src, index, isVisible, style }) => {
     <div
       className={`w-full h-64 transition-opacity duration-300 relative ${
         isVisible
-          ? "opacity-100 z-10 pointer-events-auto"
-          : "opacity-0 z-0 pointer-events-none"
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
       }`}
       style={style}
     >
@@ -170,7 +170,7 @@ const GallerySection = () => {
         </div>
 
         {/* Re-added overflow-hidden & pb-4 ONLY to the track to catch AOS bleed from the cards, protecting the document */}
-        <div className="w-full overflow-hidden pb-4">
+        <div className="w-full">
           <div
             className="grid gap-4 md:gap-5 lg:gap-6 transition-all duration-300 w-full touch-pan-y"
             style={{
