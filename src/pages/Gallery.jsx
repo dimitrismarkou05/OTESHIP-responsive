@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { loadWorkshopImages } from "../data/Workshops/workshopImages";
 import { useTranslation } from "react-i18next";
+import SectionHeader from "../components/common/SectionHeader";
 
 const GalleryImage = ({
   src,
@@ -183,18 +184,16 @@ const Gallery = () => {
         .animate-fade-scale { animation: fadeIn 0.3s ease-out forwards; }
       `}</style>
 
-      <div className="w-full p-4 sm:p-8 md:p-16">
+      <div className="w-full p-6 xs:p-8 md:p-12 lg:p-16 xl:p-20">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col gap-8 justify-evenly items-center flex-1 w-full">
-            <h1
-              className="font-bold text-4xl text-(--color-dark-text) dark:text-white"
-              data-aos="fade-up"
-            >
-              {t("gallery.title")}
-            </h1>
+          <div className="flex flex-col gap-2 md:gap-3 lg:gap-4 xl:gap-6 justify-evenly items-center flex-1 w-full">
+            <SectionHeader
+              title={t("gallery.title")}
+              description={"Test, i have images i have bitches also ok?"}
+            />
 
             <div className="w-full">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[200px] gap-4 grid-flow-dense">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[200px] gap-2 md:gap-4 grid-flow-dense">
                 {displayedImages.map((image, index) => {
                   const spanClass = getSpanClass(index);
                   const responsiveClasses = `

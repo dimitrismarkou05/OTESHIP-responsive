@@ -15,10 +15,10 @@ const SchoolCard = ({
       data-aos="fade-down"
       data-aos-delay={aosDelay}
     >
-      <div className="flex lg:flex-col md:flex-row sm:flex-col flex-col bg-white dark:bg-(--color-dark2-text) drop-shadow-md rounded-md min-w-0 flex-1 transition-colors duration-200 h-full">
+      <div className="flex flex-col md:flex-row lg:flex-col bg-white dark:bg-(--color-dark2-text) drop-shadow-md rounded-md min-w-0 flex-1 transition-colors duration-200 h-full">
         <Link
           to={to}
-          className="inset-0 lg:w-full md:w-1/2 sm:w-full w-full aspect-video block overflow-hidden rounded-t-md lg:rounded-t-md lg:rounded-l-none md:rounded-t-none md:rounded-l-md sm:rounded-t-md sm:rounded-l-none"
+          className="inset-0 block w-full aspect-video overflow-hidden rounded-t-md md:w-1/2 md:rounded-none md:rounded-l-md lg:w-full lg:rounded-none lg:rounded-t-md"
         >
           <img
             src={image}
