@@ -1,15 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ThemeToggle = ({ variant = "navbar" }) => {
   const [isDarkMode, setIsDarkMode] = useState(
     document.documentElement.classList.contains("dark"),
   );
 
+  // Sync state across all instances of ThemeToggle
+  useEffect(() => {
+    const syncTheme = () => {
+      setIsDarkMode(document.documentElement.classList.contains("dark"));
+    };
+
+    window.addEventListener("theme-changed", syncTheme);
+    return () => window.removeEventListener("theme-changed", syncTheme);
+  }, []);
+
   const handleToggle = () => {
     const newDarkMode = !isDarkMode;
     setIsDarkMode(newDarkMode);
     localStorage.setItem("theme", newDarkMode ? "dark" : "light");
     document.documentElement.classList.toggle("dark", newDarkMode);
+
+    // Broadcast the change so other instances can update
+    window.dispatchEvent(new Event("theme-changed"));
   };
 
   // Define our classes based on where the component is used
