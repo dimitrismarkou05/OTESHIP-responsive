@@ -116,8 +116,9 @@ const Carousel = ({
 
       {/* Navigation */}
       {totalPages > 1 && (
-        <div className="flex flex-col items-center gap-4 mt-8 md:mt-10 lg:mt-12">
-          <div className="flex gap-2">
+        <div className="flex flex-col items-center gap-4 mt-8 md:mt-10 lg:mt-12 w-full">
+          {/* UPDATED: Added flex-wrap, justify-center, and px-4 */}
+          <div className="flex flex-wrap justify-center gap-2 px-4 w-full max-w-md">
             {Array.from({ length: totalPages }).map((_, index) => (
               <button
                 key={index}
