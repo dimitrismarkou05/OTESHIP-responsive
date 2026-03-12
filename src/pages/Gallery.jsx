@@ -183,7 +183,7 @@ const Gallery = () => {
   };
 
   return (
-    <div className="bg-(--color-bg-primary) dark:bg-(--color-bg-dark) w-full relative">
+    <div className="bg-(--color-bg-primary) dark:bg-(--color-dark-text) w-full relative">
       <style>{`
         @keyframes slideInNext {
           from { transform: translateX(100%); opacity: 0; }
