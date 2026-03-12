@@ -245,7 +245,7 @@ const Gallery = () => {
                       <div className="[&>div]:items-start!">
                         <SectionHeader
                           title={country.name}
-                          titleColor="text-lg! md:text-xl! lg:text-2xl!"
+                          titleColor="text-lg! md:text-xl! lg:text-2xl! text-(--color-dark-text) dark:text-white"
                         />
                       </div>
                       <div className="flex flex-wrap justify-center gap-2 md:gap-4 mt-2 w-full">
