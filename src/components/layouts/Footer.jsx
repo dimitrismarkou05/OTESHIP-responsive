@@ -9,6 +9,7 @@ export default function Footer() {
     { name: t("footer.about"), href: "/about" },
     { name: t("footer.guide"), href: "/guide" },
     { name: t("footer.ceramics"), href: "/ceramics" },
+    { name: t("footer.gallery"), href: "/gallery" },
     { name: t("footer.contact"), href: "/contact" },
   ];
 

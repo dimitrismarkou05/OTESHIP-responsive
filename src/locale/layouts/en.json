@@ -16,6 +16,7 @@
     "about": "About",
     "guide": "Guide",
     "ceramics": "Workshops",
+    "gallery": "Gallery",
     "contact": "Contact",
     "copyright": "© {{year}} OTESHIP Project. All rights reserved.",
     "projectNumber": "Project Number: {{number}}"

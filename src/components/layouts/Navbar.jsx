@@ -13,7 +13,7 @@ export default function Navbar() {
   const location = useLocation();
 
   const languages = [
-    { code: "en", name: "English", flag: "us" },
+    { code: "en", name: "English", flag: "gb" },
     { code: "ελ", name: "Ελληνικά", flag: "gr" },
     { code: "pl", name: "Polski", flag: "pl" },
     { code: "tr", name: "Türkçe", flag: "tr" },
@@ -314,7 +314,8 @@ export default function Navbar() {
             </Link>
             <Link
               to="/gallery"
-              className={`hover-anim ${isActive("/gallery") ? "active" : ""}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`hover-anim inline-block w-fit mx-auto ${isActive("/gallery") ? "active" : ""}`}
             >
               {t("navbar.gallery")}
             </Link>
