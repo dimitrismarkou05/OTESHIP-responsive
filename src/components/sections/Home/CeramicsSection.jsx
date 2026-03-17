@@ -1,38 +1,81 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
-import { useLanguageData } from "../../../hooks/useLanguageData";
-import ImageCardSmall from "../../common/ImageCardSmall";
 import SectionHeader from "../../common/SectionHeader";
+import Carousel from "../../common/Carousel";
+import { loadRandomProductImages } from "../../../data/Workshops/workshopImages";
+
+const CarouselCard = ({ src, index }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  return (
+    <Link
+      to="/gallery"
+      className="block w-full h-full overflow-hidden rounded-md drop-shadow-md relative bg-gray-200 dark:bg-gray-800"
+      data-aos="fade-down"
+      data-aos-delay={300 + index * 150}
+    >
+      <div
+        className={`absolute inset-0 bg-gray-300 dark:bg-gray-700 animate-pulse transition-opacity duration-400 ease-in-out ${
+          isLoaded ? "opacity-0" : "opacity-100"
+        }`}
+      />
+
+      {src && !hasError && (
+        <img
+          src={src}
+          alt={`Product image ${index + 1}`}
+          loading="lazy" // Native browser lazy loading
+          decoding="async"
+          className={`absolute inset-0 w-full h-full object-cover rounded-lg transition-all duration-400 ease-in-out hover:scale-105 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          onLoad={() => setIsLoaded(true)}
+          onError={() => setHasError(true)}
+        />
+      )}
+
+      {hasError && (
+        <div className="absolute inset-0 flex items-center justify-center text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800">
+          Image not available
+        </div>
+      )}
+    </Link>
+  );
+};
 
 const CeramicsSection = () => {
-  const { ceramicsCardsData } = useLanguageData();
   const { t } = useTranslation("home");
+  const [randomImages, setRandomImages] = useState(Array(6).fill(null));
+
+  useEffect(() => {
+    const loadImages = async () => {
+      // Just ask for 6 random images. The file handles the rest!
+      const images = await loadRandomProductImages(6);
+      const imageUrls = images.map((img) => img.src);
+      setRandomImages(imageUrls);
+    };
+
+    loadImages();
+  }, []);
 
   return (
     <section className="bg-white dark:bg-(--color-dark-text) p-8 xs:p-10 md:p-15 lg:p-16 xl:p-20 transition-colors duration-200">
-      <div className="flex flex-col items-center gap-6 md:gap-8 lg:gap-9 xl:gap-10">
+      <div className="flex flex-col items-center gap-6 md:gap-8 lg:gap-9 xl:gap-10 max-w-7xl mx-auto w-full">
         <SectionHeader
           title={t("ceramics.title")}
           description={t("ceramics.description")}
         />
 
-        {/* Added md:max-w-2xl and lg:max-w-7xl here */}
-        <div className="flex flex-col sm:grid sm:grid-cols-4 lg:flex lg:flex-row items-stretch justify-center gap-3 xs:gap-4 md:gap-5 lg:gap-6 xl:gap-8 w-full max-w-7xl md:max-w-2xl lg:max-w-7xl">
-          {ceramicsCardsData.map((card, index) => (
-            <div
-              key={index}
-              className="w-full max-w-sm mx-auto sm:max-w-none flex justify-center lg:flex-1 sm:col-span-2"
-            >
-              <ImageCardSmall
-                to={card.to}
-                image={card.image}
-                title={card.title}
-                description={card.description}
-                aosDelay={300 + index * 150}
-                className="h-full w-full"
-              />
-            </div>
-          ))}
+        <div className="w-full mt-4">
+          <Carousel
+            items={randomImages}
+            gridContainerStyle={{ height: "256px" }}
+            renderItem={(image, index) => (
+              <CarouselCard src={image} index={index} key={index} />
+            )}
+          />
         </div>
       </div>
     </section>

@@ -1,18 +1,33 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useLanguageData } from "../../../hooks/useLanguageData";
 import ImageCard from "../../common/ImageCard";
 import SectionHeader from "../../common/SectionHeader";
+import { loadRandomWorkshopImages } from "../../../data/Workshops/workshopImages";
 
 const GoalsSection = () => {
   const { goalsData } = useLanguageData();
   const { t } = useTranslation("home");
   const firstGoalRef = useRef(null);
 
+  // Initialize with an empty string so the img tag doesn't break while loading
+  const [randomImage, setRandomImage] = useState("");
+
+  useEffect(() => {
+    const fetchRandomImage = async () => {
+      // Fetch exactly 1 optimized image using the new function
+      const images = await loadRandomWorkshopImages(1);
+      if (images && images.length > 0) {
+        setRandomImage(images[0].src);
+      }
+    };
+
+    fetchRandomImage();
+  }, []);
+
   return (
     <section className="bg-white dark:bg-(--color-dark-text) p-8 xs:p-10 md:p-15 lg:p-16 xl:p-20 transition-colors duration-200">
       <div className="flex flex-col items-center gap-6 md:gap-8 lg:gap-9 xl:gap-10">
-        {/* Abstracted Header with Delay */}
         <SectionHeader
           title={t("goals.title")}
           description={t("goals.description")}
@@ -51,8 +66,9 @@ const GoalsSection = () => {
               </div>
             ))}
           </div>
+
           <ImageCard
-            image={goalsData.card.image}
+            image={randomImage}
             title={goalsData.card.title}
             description={goalsData.card.description}
           />

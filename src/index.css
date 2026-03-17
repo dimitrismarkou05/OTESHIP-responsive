@@ -46,13 +46,23 @@
 }
 
 @layer base {
+  /* 1. Top Overscroll (Matches your Navbar perfectly now) */
+  html {
+    @apply bg-white dark:bg-(--color-bg-dark);
+  }
+
+  /* 2. Bottom Overscroll (Matches your Footer) */
   body {
     font-family: var(--font-sans);
     overflow-x: hidden;
-    @apply bg-(--color-dark-text) dark:bg-black transition-colors duration-200;
+    @apply bg-(--color-dark-text) dark:bg-black;
+  }
+
+  /* 3. The App Container (Covers the body instantly to prevent the blue flash) */
+  #root {
+    @apply bg-white dark:bg-(--color-dark-text) min-h-[100dvh];
   }
 }
-
 .link-container:hover .hover-anim::before {
   width: 100%;
   left: 0;

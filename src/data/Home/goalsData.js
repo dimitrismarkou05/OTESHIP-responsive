@@ -1,5 +1,3 @@
-import handsOnImage from "../../assets/clay-image-1.png";
-
 const goalsData = {
   en: {
     goals: [
@@ -23,7 +21,7 @@ const goalsData = {
       },
     ],
     card: {
-      image: handsOnImage,
+      image: null,
       title: "Hands-On Learning",
       description:
         "Our students develop practical skills through guided ceramic workshops and real-world business experiences",
@@ -52,7 +50,7 @@ const goalsData = {
       },
     ],
     card: {
-      image: handsOnImage,
+      image: null,
       title: "Πρακτική Μάθηση",
       description:
         "Οι μαθητές μας αναπτύσσουν πρακτικές δεξιότητες μέσω καθοδηγούμενων εργαστηρίων κεραμικής και πραγματικών επιχειρηματικών εμπειριών",
@@ -81,7 +79,7 @@ const goalsData = {
       },
     ],
     card: {
-      image: handsOnImage,
+      image: null,
       title: "Praktyczne Nauczanie",
       description:
         "Nasi uczniowie rozwijają praktyczne umiejętności poprzez prowadzone warsztaty ceramiczne i doświadczenia w realnym biznesie",
@@ -110,7 +108,7 @@ const goalsData = {
       },
     ],
     card: {
-      image: handsOnImage,
+      image: null,
       title: "Uygulamalı Öğrenme",
       description:
         "Öğrencilerimiz rehberli seramik atölyeleri ve gerçek iş deneyimleri aracılığıyla pratik beceriler geliştirir",
