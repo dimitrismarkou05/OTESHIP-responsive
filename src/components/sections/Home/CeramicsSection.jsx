@@ -13,8 +13,6 @@ const CarouselCard = ({ src, index }) => {
     <Link
       to="/gallery"
       className="block w-full h-full overflow-hidden rounded-md drop-shadow-md relative bg-gray-200 dark:bg-gray-800"
-      data-aos="fade-down"
-      data-aos-delay={300 + index * 150}
     >
       <div
         className={`absolute inset-0 bg-gray-300 dark:bg-gray-700 animate-pulse transition-opacity duration-400 ease-in-out ${

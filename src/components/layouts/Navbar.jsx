@@ -170,7 +170,7 @@ export default function Navbar() {
             </button>
 
             <div
-              inert={isLanguageOpen ? undefined : ""}
+              inert={isLanguageOpen ? undefined : true}
               className={`absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white dark:bg-(--color-bg-dark) shadow-lg ring-1 ring-gray-300 dark:ring-gray-500 ring-opacity-5 focus:outline-none z-50 transition-all duration-200 ease-out ${
                 isLanguageOpen
                   ? "transform opacity-100 scale-100 translate-y-0"
@@ -254,7 +254,7 @@ export default function Navbar() {
       {/* Mobile Menu Dropdown */}
       <div
         ref={mobileMenuRef}
-        inert={isMobileMenuOpen ? undefined : ""}
+        inert={isMobileMenuOpen ? undefined : true}
         className={`absolute top-full left-0 w-full bg-white dark:bg-(--color-bg-dark) shadow-md border-t border-gray-200 dark:border-(--color-divider) [transition:all_300ms,background-color_200ms,color_200ms,border-color_200ms] ease-in-out lg:hidden overflow-hidden ${
           isMobileMenuOpen
             ? "max-h-125 opacity-100 py-4"

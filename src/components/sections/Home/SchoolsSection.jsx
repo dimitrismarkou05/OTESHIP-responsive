@@ -35,7 +35,6 @@ const SchoolsSection = () => {
                 description={school.description}
                 country={school.country}
                 location={school.location}
-                aosDelay={300 + index * 150}
                 className="h-full w-full"
               />
             </div>

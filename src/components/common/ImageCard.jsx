@@ -12,7 +12,7 @@ const ImageCard = ({ title, description, image }) => {
   }, [image]);
 
   return (
-    <div className="flex-1" data-aos="fade-down" data-aos-delay="400">
+    <div className="flex-1">
       <div className="transition-colors duration-200 flex flex-col p-3 xs:p-3.5 md:p-4 xl:p-5 bg-(--color-bg-primary) dark:bg-(--color-bg-dark) rounded-md gap-3.5 md:gap-4 lg:gap-4.5 drop-shadow-sm flex-1 h-full">
         {/* 1. Added 'relative' and a 'min-h-[240px]' to prevent layout collapse.
           2. Added the base gray background so it acts as a solid placeholder.

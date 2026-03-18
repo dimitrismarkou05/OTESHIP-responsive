@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useLanguageData } from "../../../hooks/useLanguageData";
 import ImageCard from "../../common/ImageCard";
@@ -8,7 +8,6 @@ import { loadRandomWorkshopImages } from "../../../data/Workshops/workshopImages
 const GoalsSection = () => {
   const { goalsData } = useLanguageData();
   const { t } = useTranslation("home");
-  const firstGoalRef = useRef(null);
 
   // Initialize with an empty string so the img tag doesn't break while loading
   const [randomImage, setRandomImage] = useState("");
@@ -36,16 +35,8 @@ const GoalsSection = () => {
           <div className="flex flex-col justify-evenly flex-1 gap-4 md:gap-6 lg:gap-7 xl:gap-8 w-full">
             {goalsData.goals.map((goal, index) => (
               <div
-                ref={index === 0 ? firstGoalRef : null}
-                data-aos="fade-right"
-                data-aos-delay={300 + index * 150}
-                data-aos-anchor={
-                  index === 0 ? undefined : "#first-goal-trigger"
-                }
-                data-aos-anchor-placement="top-bottom"
                 key={index}
                 className="flex gap-2.5 md:gap-3 lg:gap-3.5 xl:gap-4"
-                id={index === 0 ? "first-goal-trigger" : undefined}
               >
                 {/* Circle */}
                 <div className="bg-(--color-primary) dark:bg-(--color-primary2) rounded-full flex items-center justify-center size-6 md:size-7 lg:size-7.5 xl:size-8 shrink-0">

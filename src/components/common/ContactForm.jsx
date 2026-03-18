@@ -5,11 +5,7 @@ const ContactForm = () => {
   const { t } = useTranslation("home");
 
   return (
-    <div
-      data-aos="fade-down"
-      data-aos-delay="400"
-      className="bg-white dark:bg-(--color-dark2-text) rounded-md p-3 xs:p-3.5 md:p-5 shadow-md transition-colors duration-200 w-full"
-    >
+    <div className="bg-white dark:bg-(--color-dark2-text) rounded-md p-3 xs:p-3.5 md:p-5 shadow-md transition-colors duration-200 w-full">
       <h2 className="text-sm md:text-base lg:text-lg font-bold text-(--color-dark-text) dark:text-white mb-3">
         {t("contact.sendMessage")}
       </h2>

@@ -6,10 +6,7 @@ const HeroSection = () => {
   const { t } = useTranslation("home");
   return (
     <section className="p-6 xs:p-8 sm:p-10 md:p-14 lg:p-20 xl:p-28 bg-linear-to-tl from-[#FFCC00] via-[#2E5D9E] via-40% to-[#0F2FA2] transition-colors duration-200">
-      <div
-        data-aos="zoom-out"
-        className="flex flex-col items-center justify-between gap-2 xs:gap-3 lg:gap-5"
-      >
+      <div className="flex flex-col items-center justify-between gap-2 xs:gap-3 lg:gap-5">
         {/* Headers */}
         <h1 className="font-bold text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white">
           {t("hero.title")}

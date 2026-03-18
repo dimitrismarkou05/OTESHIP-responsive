@@ -15,7 +15,6 @@ const AboutSection = () => {
         <SectionHeader
           title={t("about.title")}
           description={t("about.description")}
-          aosDelay="500"
         />
 
         {/* The 4-column math trick happens right here */}
@@ -36,7 +35,6 @@ const AboutSection = () => {
                 title={card.title}
                 description={card.description}
                 to={card.to}
-                aosDelay={1100 + index * 150}
                 index={index}
                 className="w-full max-w-sm h-full"
               />

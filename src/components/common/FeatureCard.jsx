@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-const FeatureCard = ({ icon, title, description, to, aosDelay, index }) => {
+const FeatureCard = ({ icon, title, description, to, index }) => {
   const cardContent = (
     <>
       <i
@@ -41,12 +41,7 @@ const FeatureCard = ({ icon, title, description, to, aosDelay, index }) => {
 
   if (index === 0) {
     return (
-      <div
-        data-aos="fade-down"
-        data-aos-delay={aosDelay}
-        data-aos-offset="50"
-        className="w-full h-full"
-      >
+      <div className="w-full h-full">
         <a href={to} className={cardClasses}>
           {cardContent}
         </a>
@@ -55,12 +50,7 @@ const FeatureCard = ({ icon, title, description, to, aosDelay, index }) => {
   }
 
   return (
-    <div
-      data-aos="fade-down"
-      data-aos-delay={aosDelay}
-      data-aos-offset="50"
-      className="w-full h-full"
-    >
+    <div className="w-full h-full">
       <Link to={to} className={cardClasses}>
         {cardContent}
       </Link>

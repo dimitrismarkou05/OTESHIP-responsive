@@ -9,8 +9,7 @@ import Contact from "./pages/Contact";
 import Guide from "./pages/Guide";
 import Ceramics from "./pages/Ceramics";
 import NotFound from "./pages/NotFound";
-import AOS from "aos";
-import { useEffect, useLayoutEffect } from "react"; // Add useLayoutEffect
+import { useLayoutEffect } from "react"; // Add useLayoutEffect
 import ScrollToTopButton from "./components/layouts/ScrollToTopButton";
 import SideBar from "./components/sections/Guide/SideBar";
 import Gallery from "./pages/Gallery";
@@ -29,15 +28,6 @@ export default function Index() {
       behavior: "instant", // Use "instant" instead of "smooth" for immediate scroll
     });
   }, [location.pathname]);
-
-  // Initialize AOS
-  useEffect(() => {
-    AOS.init({
-      duration: 550,
-      once: true,
-    });
-    AOS.refresh();
-  }, []);
 
   if (isGuidePage) {
     return (

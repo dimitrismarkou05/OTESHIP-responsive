@@ -17,19 +17,12 @@ const ContactSection = () => {
         <SectionHeader
           title={t("contact.title")}
           description={t("contact.description")}
-          aosDelay="200"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-9 xl:gap-10 max-w-7xl w-full mx-auto items-start">
           {/* Column 1: Contact Info */}
           <div className="flex flex-col gap-6 md:gap-8 w-full max-w-2xl mx-auto lg:mx-0 h-full">
-            <h2
-              className="text-base md:text-lg lg:text-xl font-bold text-(--color-dark-text) dark:text-white"
-              data-aos="fade-right"
-              data-aos-delay="150"
-              data-aos-anchor="#first-school-trigger"
-              data-aos-anchor-placement="top-bottom"
-            >
+            <h2 className="text-base md:text-lg lg:text-xl font-bold text-(--color-dark-text) dark:text-white">
               {t("contact.contactInfo")}
             </h2>
 
@@ -37,13 +30,6 @@ const ContactSection = () => {
               {contactSectionData.map((school, index) => (
                 <div
                   key={index}
-                  id={index === 0 ? "first-school-trigger" : undefined}
-                  data-aos="fade-right"
-                  data-aos-delay={300 + index * 100}
-                  data-aos-anchor={
-                    index === 0 ? undefined : "#first-school-trigger"
-                  }
-                  data-aos-anchor-placement="top-bottom"
                   className="flex flex-col gap-2 border-l-2 border-(--color-primary) dark:border-(--color-primary2) pl-4"
                 >
                   <h3 className="text-sm md:text-base font-bold text-(--color-dark-text) dark:text-white">
