@@ -7,9 +7,6 @@ import { useTranslation } from "react-i18next";
 import SectionHeader from "../components/common/SectionHeader";
 import Carousel from "../components/common/Carousel";
 
-// 1. Import the skeleton here so we can use it during the data fetch
-import GalleryPageSkeleton from "../components/skeletons/GalleryPageSkeleton"; // Adjust path if needed
-
 const GalleryImage = ({
   src,
   index,
@@ -71,9 +68,6 @@ const GalleryImage = ({
 const Gallery = () => {
   const { t } = useTranslation("gallery");
 
-  // 2. Add an internal loading state specifically for the data fetch
-  const [isLoadingData, setIsLoadingData] = useState(true);
-
   const [workshopImages, setWorkshopImages] = useState([]);
   const [productImages, setProductImages] = useState({
     gr: [],
@@ -100,32 +94,19 @@ const Gallery = () => {
   }));
 
   useEffect(() => {
-    const fetchAllImages = async () => {
-      try {
-        // 🚀 FIRE ALL REQUESTS IN PARALLEL
-        const [fetchedWorkshops, grProducts, plProducts, trProducts] =
-          await Promise.all([
-            loadWorkshopImages(),
-            loadProductImages("gr"),
-            loadProductImages("pl"),
-            loadProductImages("tr"),
-          ]);
+    // 🚀 NO ASYNC/AWAIT: Instantly grab the pre-resolved strings
+    const fetchedWorkshops = loadWorkshopImages();
+    setWorkshopImages(fetchedWorkshops.map((img) => img.src));
 
-        setWorkshopImages(fetchedWorkshops.map((img) => img.src));
+    const grProducts = loadProductImages("gr");
+    const plProducts = loadProductImages("pl");
+    const trProducts = loadProductImages("tr");
 
-        setProductImages({
-          gr: grProducts.map((img) => img.src),
-          pl: plProducts.map((img) => img.src),
-          tr: trProducts.map((img) => img.src),
-        });
-      } catch (error) {
-        console.error("Error fetching images:", error);
-      } finally {
-        setIsLoadingData(false);
-      }
-    };
-
-    fetchAllImages();
+    setProductImages({
+      gr: grProducts.map((img) => img.src),
+      pl: plProducts.map((img) => img.src),
+      tr: trProducts.map((img) => img.src),
+    });
   }, []);
 
   useEffect(() => {
@@ -230,11 +211,6 @@ const Gallery = () => {
     if (isLeftSwipe) showNext();
     else if (isRightSwipe) showPrev();
   };
-
-  // 4. EARLY RETURN: Show the skeleton if the data is still fetching
-  if (isLoadingData) {
-    return <GalleryPageSkeleton />;
-  }
 
   return (
     <div className="bg-(--color-bg-primary) dark:bg-(--color-dark-text) w-full relative">
