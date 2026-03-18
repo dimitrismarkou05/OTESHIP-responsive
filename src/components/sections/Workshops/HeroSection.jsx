@@ -16,10 +16,7 @@ const HeroSection = () => {
         />
         <div className="absolute inset-0 bg-neutral-900/40 mix-blend-multiply"></div>
       </div>
-      <div
-        data-aos="zoom-out"
-        className="flex flex-col items-center justify-between gap-2 xs:gap-3 lg:gap-5"
-      >
+      <div className="flex flex-col items-center justify-between gap-2 xs:gap-3 lg:gap-5 z-1">
         {/* Headers */}
         <h1 className="font-bold text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white max-w-3xl text-center">
           {t("hero.title")}

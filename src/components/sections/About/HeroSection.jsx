@@ -3,13 +3,21 @@ import { useTranslation } from "react-i18next";
 
 const HeroSection = () => {
   const { t } = useTranslation("about");
+
   return (
-    <section className="relative p-8 xs:p-10 sm:p-12 md:p-14 lg:p-20 xl:p-28 bg-[url(https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=1920&h=1080)] bg-cover bg-center transition-colors duration-200">
-      <div className="absolute inset-0 bg-blue-900/10"></div>
-      <div
-        data-aos="zoom-out"
-        className="flex flex-col items-center justify-between gap-2 xs:gap-3 lg:gap-5"
-      >
+    <section className="relative p-8 xs:p-10 sm:p-12 md:p-14 lg:p-20 xl:p-28 flex items-center justify-center overflow-hidden transition-colors duration-200">
+      {/* Background Image & Overlay Handling */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=1920&h=1080"
+          alt="About hero background"
+          className="w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-blue-900/10"></div>
+      </div>
+
+      {/* Content */}
+      <div className="flex flex-col items-center justify-between gap-2 xs:gap-3 lg:gap-5 z-1">
         {/* Headers */}
         <h1 className="font-bold text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white max-w-3xl text-center">
           {t("hero.title")}

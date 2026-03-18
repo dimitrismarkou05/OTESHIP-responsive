@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OTEship</title>
     <link rel="stylesheet" href="src/index.css" />
+
     <script>
       (function () {
         try {
@@ -19,9 +20,56 @@
         }
       })();
     </script>
+
+    <style>
+      body {
+        margin: 0;
+        background-color: #f9fafb;
+      }
+      #root {
+        min-height: 100vh;
+      }
+
+      .global-spinner-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+      }
+
+      .global-spinner {
+        width: 48px;
+        height: 48px;
+        border: 4px solid #e5e7eb;
+        border-top-color: #2563eb; /* Matches your --color-primary */
+        border-radius: 50%;
+        animation: global-spin 1s linear infinite;
+      }
+
+      @keyframes global-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Dark mode triggered by your script above, using your exact colors */
+      html.dark body {
+        background-color: #1f2937;
+      }
+
+      html.dark .global-spinner {
+        border-color: #374151;
+        border-top-color: #4566f7; /* Matches your --color-primary2 */
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="global-spinner-container">
+        <div class="global-spinner"></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
