@@ -12,8 +12,6 @@ const CarouselCard = ({ src, index }) => {
     <Link
       to="/gallery"
       className="block w-full h-full overflow-hidden rounded-md drop-shadow-md relative bg-gray-200 dark:bg-gray-800"
-      data-aos="fade-down"
-      data-aos-delay={300 + index * 150}
     >
       <div
         className={`absolute inset-0 bg-gray-300 dark:bg-gray-700 animate-pulse transition-opacity duration-400 ease-in-out ${
@@ -62,18 +60,11 @@ const GallerySection = () => {
   return (
     <section className="bg-white dark:bg-(--color-dark-text) p-8 xs:p-10 md:p-15 lg:p-16 xl:p-20 transition-colors duration-200">
       <div className="flex flex-col justify-between items-start gap-2 md:gap-3 lg:gap-4 xl:gap-6 max-w-7xl mx-auto w-full">
-        <h1
-          className="font-bold text-lg md:text-2xl lg:text-3xl xl:text-4xl text-(--color-dark-text) dark:text-white text-center"
-          data-aos="fade-up"
-        >
+        <h1 className="font-bold text-lg md:text-2xl lg:text-3xl xl:text-4xl text-(--color-dark-text) dark:text-white text-center">
           {t("gallery.title")}
         </h1>
 
-        <div
-          className="flex flex-col md:flex-row w-full items-start md:items-end gap-4 xs:gap-5 md:gap-6 justify-between"
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
+        <div className="flex flex-col md:flex-row w-full items-start md:items-end gap-4 xs:gap-5 md:gap-6 justify-between">
           <p className="text-sm md:text-base xl:text-lg text-(--color-bg-dark) dark:text-(--color-bg-primary)">
             {t("gallery.description")}
           </p>

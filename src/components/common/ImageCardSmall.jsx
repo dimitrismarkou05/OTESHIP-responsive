@@ -1,20 +1,9 @@
 import React from "react";
 import { Link } from "react-router";
 
-const ImageCardSmall = ({
-  to,
-  image,
-  title,
-  description,
-  aosDelay,
-  className,
-}) => {
+const ImageCardSmall = ({ to, image, title, description, className }) => {
   return (
-    <div
-      className={`flex-1 min-w-0 ${className || ""}`}
-      data-aos="fade-down"
-      data-aos-delay={aosDelay}
-    >
+    <div className={`flex-1 min-w-0 ${className || ""}`}>
       <div className="flex flex-col bg-(--color-bg-primary) dark:bg-(--color-bg-dark) drop-shadow-md rounded-md min-w-0 flex-1 transition-colors duration-200 h-full">
         <Link
           to={to}

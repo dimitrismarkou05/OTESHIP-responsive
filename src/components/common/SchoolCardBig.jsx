@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 
@@ -10,29 +10,36 @@ const SchoolCardBig = ({
   country,
   location,
   imagePosition = "left", // 'left' or 'right'
-  aosDelay,
 }) => {
   const { t } = useTranslation("about");
+  // 1. Add state to track image loading
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     <div
       className={`flex flex-col md:flex-row items-stretch justify-between w-full flex-1 gap-5 md:gap-6 lg:gap-7 xl:gap-8 sm:max-w-lg mx-0 sm:mx-auto md:mx-0 md:max-w-none ${
         imagePosition === "right" ? "md:flex-row-reverse" : ""
       }`}
-      data-aos={imagePosition === "right" ? "fade-left" : "fade-right"}
-      data-aos-delay={aosDelay}
     >
       <Link
         to={to}
-        // Removed lg:max-h-80 from the Link so the container isn't rigidly capped
-        className="w-full md:w-[45%] flex aspect-video md:aspect-auto max-h-56 sm:max-h-64 md:max-h-none overflow-hidden rounded-md shrink-0"
+        // 2. ONLY added 'relative' here so the skeleton can position itself over the image
+        className="relative w-full md:w-[45%] flex aspect-video max-h-56 sm:max-h-64 md:max-h-none overflow-hidden rounded-md shrink-0"
       >
+        {/* 3. The skeleton exactly fills the Link container, unmounts when loaded */}
+        {!isLoaded && (
+          <div className="absolute inset-0 bg-gray-300 dark:bg-gray-700 animate-pulse z-1" />
+        )}
+
         <img
           src={image}
-          alt="Hands-On Learning"
-          // Added lg:max-h-80 and lg:min-h-full directly to the image
+          alt={title}
+          // 4. Fire onLoad when the image is ready
+          onLoad={() => setIsLoaded(true)}
           className="w-full h-full object-cover transition-transform duration-400 ease-in-out hover:scale-105 lg:max-h-80 lg:min-h-full"
         />
       </Link>
+
       <div className="flex flex-col justify-start items-start flex-1 gap-2 xs:gap-3 md:gap-3.5">
         <div className="flex flex-col justify-center items-start gap-2 xs:gap-2.5 md:gap-3 w-full">
           <h1 className="text-sm md:text-base lg:text-lg font-bold text-(--color-dark-text) dark:text-white w-full line-clamp-2">

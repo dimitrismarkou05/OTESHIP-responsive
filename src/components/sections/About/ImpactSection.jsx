@@ -20,8 +20,6 @@ const ImpactSection = () => {
             <div
               key={index}
               className="flex flex-col items-center justify-center gap-2"
-              data-aos="fade-down"
-              data-aos-delay={300 + index * 150}
             >
               <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-(--color-primary) dark:text-(--color-primary2)">
                 {item.num}

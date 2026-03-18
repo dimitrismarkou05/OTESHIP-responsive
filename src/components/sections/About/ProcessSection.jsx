@@ -19,11 +19,11 @@ const ProcessSection = () => {
             items={processCardsData}
             renderItem={(card, index) => (
               <ImageCardSmall
+                key={index}
                 to={card.to}
                 image={card.image}
                 title={card.title}
                 description={card.description}
-                aosDelay={300 + index * 150}
               />
             )}
           />

@@ -8,10 +8,10 @@ import SchoolsSkeleton from "../components/skeletons/Home/SchoolsSkeleton";
 import CeramicsSkeleton from "../components/skeletons/Home/CeramicsSkeleton";
 import ContactSkeleton from "../components/skeletons/Home/ContactSkeleton";
 
-// Lazy Component Imports
 const AboutSection = lazy(
   () => import("../components/sections/Home/AboutSection"),
 );
+
 const GoalsSection = lazy(
   () => import("../components/sections/Home/GoalsSection"),
 );
