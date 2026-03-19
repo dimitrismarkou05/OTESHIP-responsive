@@ -7,6 +7,7 @@ const Carousel = ({
   gridContainerClassName = "",
 }) => {
   const [currentPage, setCurrentPage] = useState(0);
+
   const [cardsPerPage, setCardsPerPage] = useState(() => {
     if (typeof window !== "undefined") {
       if (window.innerWidth < 640) return 1;
@@ -15,7 +16,6 @@ const Carousel = ({
     return 3;
   });
 
-  // --- Touch Tracking States ---
   const [touchStartX, setTouchStartX] = useState(null);
   const [touchStartY, setTouchStartY] = useState(null);
   const [touchEndX, setTouchEndX] = useState(null);
@@ -37,6 +37,7 @@ const Carousel = ({
       }
     };
 
+    updateCardsPerPage();
     window.addEventListener("resize", updateCardsPerPage);
     return () => window.removeEventListener("resize", updateCardsPerPage);
   }, []);
@@ -51,7 +52,6 @@ const Carousel = ({
   const handleNext = () =>
     setCurrentPage((prev) => Math.min(totalPages - 1, prev + 1));
 
-  // --- Touch Handlers ---
   const onTouchStart = (e) => {
     setTouchEndX(null);
     setTouchEndY(null);
@@ -70,12 +70,29 @@ const Carousel = ({
     const distanceX = touchStartX - touchEndX;
     const distanceY = touchStartY - touchEndY;
 
-    // If vertical drag is greater than horizontal, it's a page scroll
     if (Math.abs(distanceY) > Math.abs(distanceX)) return;
 
     if (distanceX > minSwipeDistance && currentPage < totalPages - 1)
       handleNext();
     if (distanceX < -minSwipeDistance && currentPage > 0) handlePrev();
+  };
+
+  // --- True Instagram/iOS Dot State Calculation ---
+  const getDotState = (index) => {
+    if (totalPages <= 5) {
+      return index === currentPage ? "active" : "normal";
+    }
+
+    // Determine the 5-dot window based on current page
+    const start = Math.max(0, Math.min(currentPage - 2, totalPages - 5));
+    const end = start + 4;
+
+    if (index < start || index > end) return "hidden";
+    if (index === currentPage) return "active";
+    if (index === start && start !== 0) return "ghost"; // Leftmost visible dot shrinks to ghost
+    if (index === end && end !== totalPages - 1) return "ghost"; // Rightmost visible dot shrinks to ghost
+
+    return "normal";
   };
 
   return (
@@ -117,20 +134,36 @@ const Carousel = ({
       {/* Navigation */}
       {totalPages > 1 && (
         <div className="flex flex-col items-center gap-4 mt-8 md:mt-10 lg:mt-12 w-full">
-          {/* UPDATED: Added flex-wrap, justify-center, and px-4 */}
-          <div className="flex flex-wrap justify-center gap-2 px-4 w-full max-w-md">
-            {Array.from({ length: totalPages }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentPage(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  currentPage === index
-                    ? "w-6 bg-blue-600"
-                    : "w-2 bg-gray-300 dark:bg-gray-600 hover:bg-gray-400"
-                }`}
-                aria-label={`Go to page ${index + 1}`}
-              />
-            ))}
+          {/* We remove standard gaps and use margins on the dots instead so hidden dots don't take up space */}
+          <div className="flex justify-center items-center h-6 w-full max-w-md overflow-visible">
+            {Array.from({ length: totalPages }).map((_, index) => {
+              const state = getDotState(index);
+
+              let classes =
+                "rounded-full transition-all duration-300 ease-in-out cursor-pointer ";
+
+              if (state === "active") {
+                classes += "w-6 h-2 bg-blue-600 opacity-100 mx-1";
+              } else if (state === "normal") {
+                classes +=
+                  "w-2 h-2 bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 opacity-100 mx-1";
+              } else if (state === "ghost") {
+                classes +=
+                  "w-1.5 h-1.5 bg-gray-300 dark:bg-gray-600 opacity-50 mx-1";
+              } else {
+                // Completely collapses the dot so it vanishes from the layout
+                classes += "w-0 h-0 opacity-0 mx-0 pointer-events-none";
+              }
+
+              return (
+                <button
+                  key={index}
+                  onClick={() => setCurrentPage(index)}
+                  className={classes}
+                  aria-label={`Go to page ${index + 1}`}
+                />
+              );
+            })}
           </div>
 
           <div className="flex gap-4">
