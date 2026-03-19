@@ -4,6 +4,8 @@
     "description": "Atölyelerimizden ve ürünlerimizden fotoğraflar.",
     "products": "Ürünler",
     "prodDesc": "Uluslararası ürün serilerimize göz atın.",
-    "countries": ["Yunanistan", "Polonya", "Türkiye"]
+    "countries": ["Yunanistan", "Polonya", "Türkiye"],
+    "exhibitions": "Sergiler",
+    "exhDesc": "Sergi etkinliklerimizden anları ve öne çıkanları keşfedin."
   }
 }
