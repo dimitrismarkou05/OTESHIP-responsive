@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Carousel = ({
   items,
@@ -9,6 +9,10 @@ const Carousel = ({
   const [currentPage, setCurrentPage] = useState(0);
   const [windowStart, setWindowStart] = useState(0);
   const MAX_VISIBLE_PAGES = 5;
+
+  // --- NEW: Snap State ---
+  const [isJumping, setIsJumping] = useState(false);
+  const jumpTimer = useRef(null);
 
   const [cardsPerPage, setCardsPerPage] = useState(() => {
     if (typeof window !== "undefined") {
@@ -51,19 +55,25 @@ const Carousel = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cardsPerPage, totalPages, totalCards]);
 
-  // --- The Push/Pull Window Math ---
   const handlePageChange = (newPage) => {
+    // If wrapping around (jumping more than 1 page), trigger the instant snap
+    if (Math.abs(newPage - currentPage) > 1) {
+      setIsJumping(true);
+      if (jumpTimer.current) clearTimeout(jumpTimer.current);
+      // Turn animations back on after 50ms (just enough time for the DOM to teleport)
+      jumpTimer.current = setTimeout(() => {
+        setIsJumping(false);
+      }, 50);
+    }
+
     setCurrentPage(newPage);
 
     setWindowStart((prevStart) => {
       let newStart = prevStart;
 
-      // Push window right
       if (newPage > prevStart + MAX_VISIBLE_PAGES - 2) {
         newStart = newPage - MAX_VISIBLE_PAGES + 2;
-      }
-      // Pull window left
-      else if (newPage < prevStart + 1) {
+      } else if (newPage < prevStart + 1) {
         newStart = newPage - 1;
       }
 
@@ -72,7 +82,6 @@ const Carousel = ({
     });
   };
 
-  // UPDATED: Wrap around logic
   const handlePrev = () => {
     handlePageChange(currentPage === 0 ? totalPages - 1 : currentPage - 1);
   };
@@ -101,7 +110,6 @@ const Carousel = ({
 
     if (Math.abs(distanceY) > Math.abs(distanceX)) return;
 
-    // UPDATED: Removed the boundaries so swiping also wraps
     if (distanceX > minSwipeDistance) handleNext();
     if (distanceX < -minSwipeDistance) handlePrev();
   };
@@ -109,6 +117,7 @@ const Carousel = ({
   return (
     <div className="w-full">
       <div
+        // Note: The main carousel track still slides smoothly
         className={`grid gap-4 md:gap-5 lg:gap-6 transition-all duration-300 w-full touch-pan-y ${gridContainerClassName}`}
         style={{
           gridTemplateColumns: `repeat(${cardsPerPage}, minmax(0, 1fr))`,
@@ -145,11 +154,12 @@ const Carousel = ({
       {/* Navigation */}
       {totalPages > 1 && (
         <div className="flex flex-col items-center gap-4 mt-8 md:mt-10 lg:mt-12 w-full">
-          {/* THE CLIPPING MASK */}
           <div className="overflow-hidden max-w-22 flex items-center h-6 relative">
-            {/* THE SLIDING TRACK */}
+            {/* THE SLIDING TRACK: Uses duration-0 when jumping to snap instantly */}
             <div
-              className="flex gap-2 w-max transition-transform duration-300 ease-out"
+              className={`flex gap-2 w-max transition-transform ease-out ${
+                isJumping ? "duration-0" : "duration-300"
+              }`}
               style={{ transform: `translateX(-${windowStart}rem)` }}
             >
               {Array.from({ length: totalPages }).map((_, index) => {
@@ -162,8 +172,10 @@ const Carousel = ({
                   index < windowStart ||
                   index >= windowStart + MAX_VISIBLE_PAGES;
 
-                let dotClasses =
-                  "h-2 rounded-full transition-all duration-300 ease-out flex-shrink-0 ";
+                // DOTS: Also use duration-0 when jumping so their sizes snap instantly
+                let dotClasses = `h-2 rounded-full transition-all ease-out flex-shrink-0 ${
+                  isJumping ? "duration-0" : "duration-300"
+                } `;
 
                 if (isActive) {
                   dotClasses +=
@@ -192,7 +204,6 @@ const Carousel = ({
           </div>
 
           <div className="flex gap-4">
-            {/* UPDATED: Removed disabled state and conditional opacity/cursor styling */}
             <button
               onClick={handlePrev}
               className="p-2 rounded-full bg-white dark:bg-(--color-dark2-text) shadow-md transition-all hover:scale-110 cursor-pointer"
