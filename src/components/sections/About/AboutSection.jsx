@@ -60,7 +60,7 @@ const AboutSection = () => {
             {randomImage && (
               <img
                 src={randomImage}
-                alt="workshop"
+                alt="Gallery image"
                 onLoad={() => setIsLoaded(true)}
                 className={`absolute inset-0 w-full h-full object-cover rounded-md transition-all duration-400 ease-in-out hover:scale-105 ${
                   isLoaded ? "opacity-100" : "opacity-0"

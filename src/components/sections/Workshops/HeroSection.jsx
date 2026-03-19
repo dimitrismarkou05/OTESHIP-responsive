@@ -11,7 +11,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?q=80&w=2868&auto=format&fit=crop"
-          alt="Hands working on pottery wheel"
+          alt="Workshops hero background"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-neutral-900/40 mix-blend-multiply"></div>

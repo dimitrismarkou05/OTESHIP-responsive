@@ -76,7 +76,7 @@ export default function Navbar() {
           <div className="flex flex-row items-center pb-0 md:pb-1 lg:pb-1.5 xl:pb-2 space-x-0.5 sm:space-x-1 md:space-x-1.5 xl:space-x-2">
             <img
               src="/logos/oteship.png"
-              alt="IKY"
+              alt="OTEShip"
               className="h-[0.75em] sm:h-[1em] md:h-[1.5em] lg:h-[1.75em] xl:h-[2em] w-auto inline-block"
             />
             <h1 className="text-base sm:text-lg md:text-xl lg:text-[1.35rem] xl:text-2xl font-bold text-(--color-primary) dark:text-(--color-primary2)">
@@ -97,12 +97,12 @@ export default function Navbar() {
             />
             <img
               src="/logos/poland.png"
-              alt="IKY"
+              alt="SOSWDNR"
               className="h-[0.65em] sm:h-[0.75em] md:h-[0.85em] lg:h-[0.9em] xl:h-[1em] w-auto inline-block"
             />
             <img
               src="/logos/turkey.png"
-              alt="IKY"
+              alt="MÖEUO III K"
               className="h-[0.65em] sm:h-[0.75em] md:h-[0.85em] lg:h-[0.9em] xl:h-[1em] w-auto inline-block"
             />
             <h2 className="text-[6px] sm:text-[8px] md:text-[10px] lg:text-[11px] xl:text-xs text-(--color-bg-dark) dark:text-(--color-bg-primary)">
