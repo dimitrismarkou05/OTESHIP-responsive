@@ -8,23 +8,13 @@ import { useTranslation } from "react-i18next";
 import SectionHeader from "../components/common/SectionHeader";
 import Carousel from "../components/common/Carousel";
 
-const GalleryImage = ({
-  src,
-  index,
-  onClick,
-  inCarousel = false,
-  anchorId,
-}) => {
+const GalleryImage = ({ src, index, onClick, inCarousel = false }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
 
   return (
     <div
       data-index={index}
-      data-aos={inCarousel ? "" : "fade-down"}
-      data-aos-delay={inCarousel ? 0 : 300 + index * 50}
-      data-aos-offset="0"
-      data-aos-anchor={inCarousel || !anchorId ? undefined : `#${anchorId}`}
       onClick={onClick}
       className={`relative rounded-md overflow-hidden shadow-md cursor-pointer bg-gray-200 dark:bg-gray-800 group ${
         inCarousel
@@ -257,7 +247,6 @@ const Gallery = () => {
                     key={`grid-workshop-${index}`}
                     src={image}
                     index={index}
-                    anchorId="workshop-grid"
                     onClick={() => openLightbox(index, workshopImages)}
                   />
                 ))}
@@ -310,7 +299,6 @@ const Gallery = () => {
                             key={`grid-${country.code}-${index}`}
                             src={image}
                             index={index}
-                            anchorId={`product-grid-${country.code}`}
                             onClick={() =>
                               openLightbox(index, imagesForCountry)
                             }
@@ -356,7 +344,6 @@ const Gallery = () => {
                       key={`grid-exhibition-${index}`}
                       src={image}
                       index={index}
-                      anchorId="exhibition-grid"
                       onClick={() => openLightbox(index, exhibitionImages)}
                     />
                   ))}
