@@ -16,7 +16,6 @@ const ContactForm = () => {
     if (e.target.elements.botcheck.value) {
       setSubmitStatus("success");
       form.current.reset();
-      // Clear the message after 5 seconds
       setTimeout(() => setSubmitStatus(null), 5000);
       return;
     }
@@ -37,16 +36,12 @@ const ContactForm = () => {
           setIsSubmitting(false);
           setSubmitStatus("success");
           form.current.reset();
-
-          // Clear the success message after 5 seconds
           setTimeout(() => setSubmitStatus(null), 5000);
         },
         (error) => {
           setIsSubmitting(false);
           setSubmitStatus("error");
           console.error("EmailJS Error:", error.text);
-
-          // Clear the error message after 5 seconds
           setTimeout(() => setSubmitStatus(null), 5000);
         },
       );
@@ -85,6 +80,10 @@ const ContactForm = () => {
             name="user_name"
             type="text"
             required
+            onInvalid={(e) =>
+              e.target.setCustomValidity(t("contact.requiredField"))
+            }
+            onInput={(e) => e.target.setCustomValidity("")}
             className="text-xs md:text-sm lg:text-base text-(--color-dark-text) dark:text-white bg-transparent border border-gray-300 dark:border-gray-500 rounded-md px-3.5 py-2 xs:py-2.5 md:py-3 focus:outline-none focus:ring-1 focus:ring-(--color-primary) transition-all"
           />
         </div>
@@ -103,7 +102,18 @@ const ContactForm = () => {
             type="email"
             required
             pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
-            title={t("contact.invalidEmail")}
+            title={t("contact.invalidFormat")}
+            onInvalid={(e) => {
+              if (e.target.validity.valueMissing) {
+                e.target.setCustomValidity(t("contact.requiredField"));
+              } else if (
+                e.target.validity.patternMismatch ||
+                e.target.validity.typeMismatch
+              ) {
+                e.target.setCustomValidity(t("contact.invalidEmail"));
+              }
+            }}
+            onInput={(e) => e.target.setCustomValidity("")}
             className="text-xs md:text-sm lg:text-base text-(--color-dark-text) dark:text-white bg-transparent border border-gray-300 dark:border-gray-500 rounded-md px-3.5 py-2 xs:py-2.5 md:py-3 focus:outline-none focus:ring-1 focus:ring-(--color-primary) transition-all"
           />
         </div>
@@ -122,8 +132,12 @@ const ContactForm = () => {
             type="tel"
             required
             pattern="[0-9+() -]*"
+            onInvalid={(e) =>
+              e.target.setCustomValidity(t("contact.requiredField"))
+            }
             onInput={(e) => {
               e.target.value = e.target.value.replace(/[^0-9+\-() ]/g, "");
+              e.target.setCustomValidity("");
             }}
             className="text-xs md:text-sm lg:text-base text-(--color-dark-text) dark:text-white bg-transparent border border-gray-300 dark:border-gray-500 rounded-md px-3.5 py-2 xs:py-2.5 md:py-3 focus:outline-none focus:ring-1 focus:ring-(--color-primary) transition-all"
           />
@@ -142,6 +156,10 @@ const ContactForm = () => {
             name="message"
             rows="3"
             required
+            onInvalid={(e) =>
+              e.target.setCustomValidity(t("contact.requiredField"))
+            }
+            onInput={(e) => e.target.setCustomValidity("")}
             className="text-xs md:text-sm lg:text-base text-(--color-dark-text) dark:text-white bg-transparent border border-gray-300 dark:border-gray-500 rounded-md px-3.5 py-2 xs:py-2.5 md:py-3 resize-none focus:outline-none focus:ring-1 focus:ring-(--color-primary) transition-all"
           ></textarea>
         </div>
