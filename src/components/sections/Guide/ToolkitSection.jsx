@@ -5,20 +5,48 @@ import { useLanguageData } from "../../../hooks/useLanguageData";
 const ToolkitSection = () => {
   const { t } = useTranslation("guide");
   const { toolkitData } = useLanguageData();
-
-  // State to manage which template accordion is currently open
   const [openSheet, setOpenSheet] = useState(null);
 
   const toggleSheet = (id) => {
-    if (openSheet === id) {
-      setOpenSheet(null);
-    } else {
-      setOpenSheet(id);
-    }
+    setOpenSheet(openSheet === id ? null : id);
+  };
+
+  const handlePrint = (sheet) => {
+    const printWindow = window.open("", "_blank", "height=600,width=800");
+
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>${sheet.title}</title>
+          <style>
+            body { font-family: sans-serif; padding: 40px; line-height: 1.6; color: #333; }
+            h1 { border-bottom: 2px solid #333; padding-bottom: 10px; font-size: 24px; }
+            .content { white-space: pre-wrap; font-family: monospace; background: #f9f9f9; padding: 20px; border: 1px solid #ddd; border-radius: 4px; }
+            @media print {
+              .no-print { display: none; }
+            }
+          </style>
+        </head>
+        <body>
+          <h1>${sheet.title}</h1>
+          <div class="content">${sheet.content}</div>
+          <script>
+            setTimeout(() => {
+              window.print();
+              window.close();
+            }, 250);
+          </script>
+        </body>
+      </html>
+    `);
+    printWindow.document.close();
   };
 
   return (
-    <section className="flex flex-col gap-10 scroll-mt-32 w-full" id="toolkit">
+    <section
+      className="flex flex-col gap-10 scroll-mt-32 w-full mb-4"
+      id="toolkit"
+    >
       {/* Header Section */}
       <div className="flex flex-col gap-3" data-aos="fade-up">
         <div className="flex flex-row items-center justify-start gap-2">
@@ -41,7 +69,6 @@ const ToolkitSection = () => {
         <h2 className="font-semibold text-lg text-(--color-dark-text) dark:text-white border-b border-(--color-divider)/50 pb-2">
           {t("toolkit.tableTitle")}
         </h2>
-
         <div className="overflow-x-auto bg-white dark:bg-(--color-dark-text) rounded-md drop-shadow-lg border border-(--color-divider)/50 mt-2">
           <table className="w-full text-left border-collapse min-w-150">
             <thead>
@@ -87,29 +114,47 @@ const ToolkitSection = () => {
           {toolkitData?.sheets?.map((sheet) => (
             <div
               key={sheet.id}
-              className="flex flex-col bg-white dark:bg-(--color-dark-text) rounded-md drop-shadow-sm border border-(--color-divider)/40 overflow-hidden transition-all duration-300"
+              className="flex flex-col bg-white dark:bg-(--color-dark-text) rounded-md drop-shadow-sm border border-(--color-divider)/40 overflow-hidden transition-all duration-300 hover:bg-slate-50 dark:hover:bg-slate-800/30"
             >
-              {/* Accordion Header */}
-              <button
-                onClick={() => toggleSheet(sheet.id)}
-                className="flex flex-row items-center justify-between p-4 w-full text-left hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors"
-              >
-                <div className="flex flex-row items-center gap-3">
+              {/* Accordion Header Container */}
+              <div className="flex flex-row items-stretch justify-between w-full">
+                {/* Trigger Button - Main Clickable Area */}
+                <button
+                  onClick={() => toggleSheet(sheet.id)}
+                  className="flex flex-row items-center gap-3 text-left p-4 flex-1 cursor-pointer"
+                >
                   <i className="fa-regular fa-file-lines text-(--color-secondary)"></i>
-                  <h3 className="font-medium text-sm text-(--color-dark-text) dark:text-white">
+                  <h3 className="font-medium text-sm text-(--color-dark-text) dark:text-white flex-1">
                     {sheet.title}
                   </h3>
-                </div>
-                <i
-                  className={`fa-solid fa-chevron-down text-xs text-slate-400 transition-transform duration-300 ${openSheet === sheet.id ? "rotate-180" : ""}`}
-                ></i>
-              </button>
+                  <i
+                    className={`fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-300 ${
+                      openSheet === sheet.id ? "rotate-180" : ""
+                    }`}
+                  ></i>
+                </button>
 
-              {/* Accordion Content */}
+                {/* Print Button Wrapper */}
+                <div className="flex items-center pr-4">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePrint(sheet);
+                    }}
+                    // Changed group-hover to standard hover so it only lights up when targeted directly
+                    className="flex flex-row items-center gap-2 bg-slate-100 dark:bg-slate-700 hover:bg-(--color-primary) hover:text-white dark:text-slate-300 py-1.5 px-3 rounded text-xs font-medium transition-all cursor-pointer whitespace-nowrap"
+                  >
+                    <i className="fa-solid fa-print"></i>
+                    Print
+                  </button>
+                </div>
+              </div>
+
+              {/* Accordion Content (Unchanged) */}
               <div
                 className={`transition-all duration-300 ease-in-out ${
                   openSheet === sheet.id
-                    ? "max-h-200 opacity-100"
+                    ? "max-h-250 opacity-100"
                     : "max-h-0 opacity-0"
                 }`}
               >
