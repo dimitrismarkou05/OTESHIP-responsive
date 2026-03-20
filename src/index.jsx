@@ -107,7 +107,7 @@ export default function Index() {
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          <div className="no-scale flex justify-end p-4 bg-(--color-bg-primary) dark:bg-(--color-bg-dark) border-b border-(--color-light3-text)/40 shrink-0">
+          <div className="no-scale flex justify-end p-4 bg-white dark:bg-(--color-bg-dark) border-b border-(--color-light3-text)/40 shrink-0">
             <button
               onClick={() => setIsSidebarOpen(false)}
               className="no-scale flex items-center justify-center w-10 h-10 text-(--color-dark-text) dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors cursor-pointer"
