@@ -105,7 +105,7 @@ export default function Navbar() {
               alt="MÖEUO III K"
               className="h-[0.65em] sm:h-[0.75em] md:h-[0.85em] lg:h-[0.9em] xl:h-[1em] w-auto inline-block shrink-0"
             />
-            <h2 className="text-6px xs:text-7px sm:text-8px md:text-10px lg:text-11px xl:text-xs text-(--color-bg-dark) dark:text-(--color-bg-primary) whitespace-nowrap">
+            <h2 className="text-[10px] lg:text-[11px] xl:text-[12px] text-(--color-bg-dark) dark:text-(--color-bg-primary) whitespace-nowrap">
               Erasmus+
             </h2>
           </div>
