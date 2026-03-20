@@ -8,7 +8,8 @@ const WorkshopCardBigSkeleton = ({ imagePosition = "left" }) => (
     }`}
   >
     {/* Image Placeholder 
-        Uses aspect-video across all sizes to force the empty div to hold the shape. */}
+        Uses aspect-video across all sizes to force the empty div to hold the shape. 
+        Matches the new max-heights and sizing from the real component. */}
     <div className="w-full md:w-[45%] aspect-video max-h-56 sm:max-h-64 md:max-h-none lg:max-h-80 overflow-hidden rounded-md shrink-0 bg-gray-200 dark:bg-gray-700 animate-pulse"></div>
 
     {/* Content Wrapper */}
@@ -24,11 +25,8 @@ const WorkshopCardBigSkeleton = ({ imagePosition = "left" }) => (
         <div className="w-full h-3 md:h-4 lg:h-5 bg-gray-200 dark:bg-gray-700 rounded-sm animate-pulse"></div>
         <div className="w-11/12 h-3 md:h-4 lg:h-5 bg-gray-200 dark:bg-gray-700 rounded-sm animate-pulse"></div>
         <div className="w-4/5 h-3 md:h-4 lg:h-5 bg-gray-200 dark:bg-gray-700 rounded-sm animate-pulse"></div>
-        {/* Added 5th line here */}
         <div className="w-3/4 h-3 md:h-4 lg:h-5 bg-gray-200 dark:bg-gray-700 rounded-sm animate-pulse"></div>
       </div>
-
-      {/* Outcomes section intentionally omitted per instructions */}
     </div>
   </div>
 );
@@ -40,9 +38,18 @@ const AboutSkeleton = () => {
       id="workshops-skeleton"
     >
       <div className="flex flex-col justify-between items-center gap-6 md:gap-8 lg:gap-9 xl:gap-10 max-w-7xl mx-auto w-full">
-        {/* Section Header Skeleton (Title Only) */}
-        <div className="flex flex-col justify-center items-center w-full">
+        {/* Top Section Header Skeleton (Title + Description) */}
+        <div className="flex flex-col justify-center items-center gap-1 md:gap-2 lg:gap-3 w-full">
           <div className="h-7 md:h-8 lg:h-9 xl:h-10 w-48 md:w-64 bg-gray-200 dark:bg-gray-700 rounded-md animate-pulse"></div>
+
+          {/* Description Lines (Mimicking the 4-line centered paragraph) */}
+          <div className="flex flex-col items-center gap-1.5 w-full max-w-4xl mt-2">
+            <div className="h-4 md:h-5 xl:h-6 w-full bg-gray-200 dark:bg-gray-700 rounded-sm animate-pulse"></div>
+            <div className="h-4 md:h-5 xl:h-6 w-[98%] bg-gray-200 dark:bg-gray-700 rounded-sm animate-pulse"></div>
+            <div className="h-4 md:h-5 xl:h-6 w-[95%] bg-gray-200 dark:bg-gray-700 rounded-sm animate-pulse"></div>
+            {/* Short final line, centered */}
+            <div className="h-4 md:h-5 xl:h-6 w-1/3 md:w-2/5 bg-gray-200 dark:bg-gray-700 rounded-sm animate-pulse"></div>
+          </div>
         </div>
 
         {/* Workshop Cards List Container */}
@@ -54,6 +61,18 @@ const AboutSkeleton = () => {
               imagePosition={index % 2 === 0 ? "left" : "right"}
             />
           ))}
+        </div>
+
+        {/* Bottom Section Header Skeleton (Description Only) */}
+        <div className="flex flex-col justify-center items-center w-full mt-2">
+          {/* Description Lines (Mimicking the 4-line centered paragraph) */}
+          <div className="flex flex-col items-center gap-1.5 w-full max-w-4xl">
+            <div className="h-4 md:h-5 xl:h-6 w-full bg-gray-200 dark:bg-gray-700 rounded-sm animate-pulse"></div>
+            <div className="h-4 md:h-5 xl:h-6 w-[98%] bg-gray-200 dark:bg-gray-700 rounded-sm animate-pulse"></div>
+            <div className="h-4 md:h-5 xl:h-6 w-[95%] bg-gray-200 dark:bg-gray-700 rounded-sm animate-pulse"></div>
+            {/* Short final line, centered */}
+            <div className="h-4 md:h-5 xl:h-6 w-1/3 md:w-2/5 bg-gray-200 dark:bg-gray-700 rounded-sm animate-pulse"></div>
+          </div>
         </div>
       </div>
     </section>
