@@ -180,7 +180,7 @@ const ContactForm = () => {
 
       {/* --- TOAST NOTIFICATION (LEFT ALIGNED) --- */}
       <div
-        className={`fixed bottom-10 left-0 right-0 sm:right-auto sm:left-5 sm:bottom-5 z-9999 transition-all duration-500 transform px-4 sm:px-0 ${
+        className={`no-scale fixed bottom-10 left-0 right-0 sm:right-auto sm:left-5 sm:bottom-5 z-9999 transition-all duration-500 transform px-4 sm:px-0 ${
           showToast
             ? "translate-x-0 opacity-100"
             : "-translate-x-full opacity-0"

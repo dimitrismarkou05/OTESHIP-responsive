@@ -42,7 +42,7 @@ const ThemeToggle = ({ variant = "navbar" }) => {
 
   return (
     <div
-      className={`relative inline-block shrink-0 ${wrapperSize}`}
+      className={`ui-scale-safe relative inline-block shrink-0 ${wrapperSize}`}
       style={{ lineHeight: 0 }}
     >
       {/* Invisible expanded touch target */}
