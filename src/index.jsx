@@ -68,7 +68,7 @@ export default function Index() {
   if (isGuidePage) {
     return (
       // FIX: Removed overflow-x-hidden so the sticky Navbar works again
-      <div className="flex flex-col min-h-screen bg-(--color-bg-primary) dark:bg-(--color-dark-text) transition-colors duration-200">
+      <div className="flex flex-col min-h-screen bg-[#F8FAFC] dark:bg-[#0b101a] transition-colors duration-200">
         <Navbar />
         <ScrollToTopButton />
         <AccessibilityMenu />

@@ -83,8 +83,8 @@
 
 @layer base {
   body.guide-page {
-    @apply bg-(--color-bg-primary) dark:bg-(--color-dark-text);
-    @apply shadow-[0_10px_0_0_var(--color-bg-primary)] dark:shadow-[0_10px_0_0_var(--color-dark-text)];
+    @apply bg-[#F8FAFC] dark:bg-[#0b101a];
+    @apply shadow-[0_10px_0_0_#F8FAFC] dark:shadow-[0_10px_0_0_#0b101a];
   }
 }
 
