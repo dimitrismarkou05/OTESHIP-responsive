@@ -28,7 +28,7 @@ const WorkshopCardBig = ({
         )}
 
         <img
-          src={image}
+          src={image || null}
           alt={title}
           onLoad={() => setIsLoaded(true)}
           className="w-full h-full object-cover transition-transform duration-400 ease-in-out hover:scale-105 lg:max-h-80 lg:min-h-full"

@@ -172,18 +172,29 @@ html {
 }
 
 /* Highlight Links */
-.links-highlighted a:not([class*="no-highlight"]),
-.links-highlighted button:not([class*="no-highlight"]) {
+.links-highlighted a:not(.no-highlight):not(.no-highlight *),
+.links-highlighted button:not(.no-highlight):not(.no-highlight *) {
   text-decoration: underline !important;
   text-decoration-color: var(--color-primary) !important;
   text-decoration-thickness: 2px !important;
   text-underline-offset: 4px !important;
 }
 
-.links-highlighted a:hover,
-.links-highlighted button:hover {
-  background-color: rgba(37, 99, 235, 0.1) !important;
+.links-highlighted a:hover:not(.no-highlight):not(.no-highlight *),
+.links-highlighted button:hover:not(.no-highlight):not(.no-highlight *) {
+  background-color: rgba(37, 99, 235, 0.15) !important;
+  color: var(
+    --color-primary
+  ) !important; /* Forces text to be visible on light bg */
   border-radius: 4px;
+}
+
+.dark .links-highlighted a:hover:not(.no-highlight):not(.no-highlight *),
+.dark .links-highlighted button:hover:not(.no-highlight):not(.no-highlight *) {
+  background-color: rgba(69, 102, 247, 0.25) !important;
+  color: var(
+    --color-primary2
+  ) !important; /* Forces text to be visible on dark bg */
 }
 
 /* Active Navigation Links */

@@ -1,10 +1,7 @@
-// src/components/layouts/AccessibilityMenu.jsx
 import React, { useState, useEffect, useRef } from "react";
 import { useAccessibility } from "../../context/AccessibilityContext";
-//import { useTranslation } from 'react-i18next';
 
 const AccessibilityMenu = () => {
-  //const { t } = useTranslation('layouts');
   const { settings, updateSettings, toggleSetting } = useAccessibility();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
@@ -21,66 +18,69 @@ const AccessibilityMenu = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Floating button styling
   const buttonClasses = `
-    fixed bottom-24 right-0 z-1000
-    bg-(--color-primary) dark:bg-(--color-primary2)
-    text-white p-4 rounded-l-full
-    shadow-lg cursor-pointer
-    transition-all duration-300
-    hover:scale-110
-    flex items-center gap-2
-    w-auto h-auto
-    ${isOpen ? "translate-x-0" : "translate-x-0"}
+    fixed bottom-24 right-0 z-5000
+    bg-(--color-primary) hover:bg-(--color-primary-hover) 
+    dark:bg-(--color-primary2) dark:hover:bg-(--color-primary2-hover)
+    text-white p-3 sm:p-4 rounded-l-xl
+    drop-shadow-xl cursor-pointer
+    transition-all duration-300 ease-in-out
+    hover:pl-5 flex items-center justify-center
   `;
 
+  // Menu panel styling - Width caps at w-80 starting at xs (440px)
   const menuClasses = `
-    fixed bottom-24 right-20 z-1000
+    fixed bottom-24 right-4 right-4 xs:right-14 sm:right-16 z-5000
     bg-white dark:bg-(--color-dark2-text)
-    shadow-xl rounded-lg
-    p-4 w-80
-    transition-all duration-300
+    shadow-2xl rounded-xl
+    p-4 sm:p-5 
+    w-[calc(100vw-2rem)] xs:w-80
+    max-h-[75vh] overflow-y-auto
     border border-gray-200 dark:border-gray-700
-    ${isOpen ? "opacity-100 visible translate-x-0" : "opacity-0 invisible translate-x-4"}
+    transform transition-all duration-300 origin-bottom-right
+    ${isOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none invisible"}
   `;
 
   return (
-    <>
+    <div ref={menuRef} className="no-highlight">
       {/* Floating button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={buttonClasses}
-        aria-label="Accessibility menu"
+        aria-label="Toggle accessibility menu"
         title="Accessibility options"
       >
-        <i className="fa-solid fa-universal-access text-xl"></i>
-        {isOpen && <span className="text-sm">Close</span>}
+        <i
+          className={`fa-solid ${isOpen ? "fa-xmark" : "fa-universal-access"} text-lg sm:text-xl transition-transform duration-300`}
+        ></i>
       </button>
 
       {/* Menu panel */}
-      <div ref={menuRef} className={menuClasses}>
-        <div className="flex flex-col gap-4">
-          <h3 className="font-bold text-lg text-(--color-dark-text) dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
+      <div className={menuClasses}>
+        <div className="flex flex-col gap-4 sm:gap-5">
+          <h3 className="font-bold text-base sm:text-lg text-(--color-dark-text) dark:text-white border-b border-gray-200 dark:border-gray-600 pb-2">
             Accessibility Options
           </h3>
 
           {/* Font Size */}
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium text-(--color-dark-text) dark:text-white">
+          <div className="flex flex-col gap-1.5 sm:gap-2">
+            <label className="text-xs sm:text-sm font-medium text-(--color-dark-text) dark:text-white">
               Font Size
             </label>
-            <div className="flex gap-2">
+            <div className="flex gap-1.5 sm:gap-2">
               {["normal", "large", "xlarge"].map((size) => (
                 <button
                   aria-label="Change Font Size"
                   key={size}
                   onClick={() => updateSettings({ fontSize: size })}
                   className={`
-                    flex-1 px-3 py-2 text-sm rounded
-                    transition-all capitalize
+                    flex-1 px-2 py-1.5 sm:px-3 sm:py-2 text-[10px] xs:text-xs sm:text-sm rounded cursor-pointer
+                    transition-all capitalize font-medium
                     ${
                       settings.fontSize === size
-                        ? "bg-(--color-primary) text-white"
-                        : "bg-gray-100 dark:bg-gray-700 text-(--color-dark-text) dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600"
+                        ? "bg-(--color-primary) dark:bg-(--color-primary2) text-white"
+                        : "bg-gray-100 dark:bg-gray-800 text-(--color-dark-text) dark:text-white hover:bg-gray-200 dark:hover:bg-gray-900"
                     }
                   `}
                 >
@@ -91,23 +91,23 @@ const AccessibilityMenu = () => {
           </div>
 
           {/* Contrast */}
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium text-(--color-dark-text) dark:text-white">
+          <div className="flex flex-col gap-1.5 sm:gap-2">
+            <label className="text-xs sm:text-sm font-medium text-(--color-dark-text) dark:text-white">
               Contrast
             </label>
-            <div className="flex gap-2">
+            <div className="flex gap-1.5 sm:gap-2">
               {["normal", "high"].map((contrast) => (
                 <button
                   aria-label="Change Contrast"
                   key={contrast}
                   onClick={() => updateSettings({ contrast })}
                   className={`
-                    flex-1 px-3 py-2 text-sm rounded
-                    transition-all capitalize
+                    flex-1 px-2 py-1.5 sm:px-3 sm:py-2 text-[10px] xs:text-xs sm:text-sm rounded cursor-pointer
+                    transition-all capitalize font-medium
                     ${
                       settings.contrast === contrast
-                        ? "bg-(--color-primary) text-white"
-                        : "bg-gray-100 dark:bg-gray-700 text-(--color-dark-text) dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600"
+                        ? "bg-(--color-primary) dark:bg-(--color-primary2) text-white"
+                        : "bg-gray-100 dark:bg-gray-800 text-(--color-dark-text) dark:text-white hover:bg-gray-200 dark:hover:bg-gray-900"
                     }
                   `}
                 >
@@ -118,23 +118,23 @@ const AccessibilityMenu = () => {
           </div>
 
           {/* Line Spacing */}
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium text-(--color-dark-text) dark:text-white">
+          <div className="flex flex-col gap-1.5 sm:gap-2">
+            <label className="text-xs sm:text-sm font-medium text-(--color-dark-text) dark:text-white">
               Line Spacing
             </label>
-            <div className="flex gap-2">
+            <div className="flex gap-1.5 sm:gap-2">
               {["normal", "wide"].map((spacing) => (
                 <button
                   aria-label="Change Line Spacing"
                   key={spacing}
                   onClick={() => updateSettings({ lineSpacing: spacing })}
                   className={`
-                    flex-1 px-3 py-2 text-sm rounded
-                    transition-all capitalize
+                    flex-1 px-2 py-1.5 sm:px-3 sm:py-2 text-[10px] xs:text-xs sm:text-sm rounded cursor-pointer
+                    transition-all capitalize font-medium
                     ${
                       settings.lineSpacing === spacing
-                        ? "bg-(--color-primary) text-white"
-                        : "bg-gray-100 dark:bg-gray-700 text-(--color-dark-text) dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600"
+                        ? "bg-(--color-primary) dark:bg-(--color-primary2) text-white"
+                        : "bg-gray-100 dark:bg-gray-800 text-(--color-dark-text) dark:text-white hover:bg-gray-200 dark:hover:bg-gray-900"
                     }
                   `}
                 >
@@ -167,19 +167,23 @@ const AccessibilityMenu = () => {
                 key={option.key}
                 onClick={() => toggleSetting(option.key)}
                 className={`
-                  flex items-center gap-3 px-3 py-2 rounded
+                  flex items-center gap-2.5 sm:gap-3 px-3 py-2 sm:py-2.5 rounded cursor-pointer
                   transition-all w-full text-left
                   ${
                     settings[option.key]
-                      ? "bg-(--color-primary) text-white"
-                      : "bg-gray-100 dark:bg-gray-700 text-(--color-dark-text) dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600"
+                      ? "bg-(--color-primary) dark:bg-(--color-primary2) text-white"
+                      : "bg-gray-100 dark:bg-gray-800 text-(--color-dark-text) dark:text-white hover:bg-gray-200 dark:hover:bg-gray-900"
                   }
                 `}
               >
-                <i className={`${option.icon} w-5`}></i>
-                <span className="text-sm flex-1">{option.label}</span>
                 <i
-                  className={`fa-solid ${settings[option.key] ? "fa-check" : "fa-xmark"}`}
+                  className={`${option.icon} w-5 text-center text-xs sm:text-sm`}
+                ></i>
+                <span className="text-xs sm:text-sm flex-1 font-medium">
+                  {option.label}
+                </span>
+                <i
+                  className={`fa-solid ${settings[option.key] ? "fa-check" : "fa-xmark"} text-xs sm:text-sm`}
                 ></i>
               </button>
             ))}
@@ -198,13 +202,13 @@ const AccessibilityMenu = () => {
                 highlightLinks: false,
               })
             }
-            className="mt-2 px-4 py-2 text-sm bg-gray-200 dark:bg-gray-600 text-(--color-dark-text) dark:text-white rounded hover:bg-gray-300 dark:hover:bg-gray-500 transition-all"
+            className="mt-1 sm:mt-2 px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm font-bold bg-gray-200 dark:bg-gray-800 text-(--color-dark-text) dark:text-white rounded hover:bg-gray-300 dark:hover:bg-gray-900 transition-all cursor-pointer"
           >
             Reset to Default
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
