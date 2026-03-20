@@ -92,7 +92,7 @@ export default function Index() {
 
         {/* Mobile Backdrop Blur */}
         <div
-          className={`fixed inset-0 bg-black/40 backdrop-blur-sm z-4000 lg:hidden transition-opacity duration-300 ${
+          className={`fixed inset-0 bg-black/40 backdrop-blur-sm z-6000 lg:hidden transition-opacity duration-300 ${
             isSidebarOpen
               ? "opacity-100 visible"
               : "opacity-0 invisible pointer-events-none"
@@ -103,14 +103,14 @@ export default function Index() {
 
         {/* Mobile Drawer (Slides from Left) */}
         <div
-          className={`fixed inset-y-0 left-0 z-5000 w-[85vw] max-w-sm bg-white dark:bg-(--color-dark-text)  transform transition-transform duration-300 ease-in-out lg:hidden flex flex-col ${
+          className={`fixed inset-y-0 left-0 z-7000 w-[85vw] max-w-sm bg-white dark:bg-(--color-dark-text)  transform transition-transform duration-300 ease-in-out lg:hidden flex flex-col ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          <div className="flex justify-end p-4 bg-(--color-bg-primary) dark:bg-(--color-bg-dark) border-b border-(--color-light3-text)/40 shrink-0">
+          <div className="no-scale flex justify-end p-4 bg-(--color-bg-primary) dark:bg-(--color-bg-dark) border-b border-(--color-light3-text)/40 shrink-0">
             <button
               onClick={() => setIsSidebarOpen(false)}
-              className="text-(--color-dark-text) dark:text-white p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors cursor-pointer"
+              className="no-scale flex items-center justify-center w-10 h-10 text-(--color-dark-text) dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors cursor-pointer"
             >
               <i className="fa-solid fa-xmark text-xl"></i>
             </button>
