@@ -18,7 +18,7 @@ const EmploymentSection = () => {
     // Let's give it 1000ms (1 full second) so you can actually see the smooth fade in and hold
     setTimeout(() => {
       setAnimatedCard(null);
-    }, 1000);
+    }, 700);
   };
 
   // Expose the animation function to the window object for sidebar access
@@ -32,7 +32,7 @@ const EmploymentSection = () => {
   const getCardClass = (cardId) => {
     // Put transition, duration, and the ring thickness (ring-2) in the base
     const baseClass =
-      "bg-white rounded-md drop-shadow-lg p-6 w-full h-full flex flex-col gap-4 transition-all duration-500 ease-in-out ring-2";
+      "bg-white rounded-md drop-shadow-lg p-6 w-full h-full flex flex-col gap-4 transition-all duration-350 ease-in-out ring-2";
 
     // Swap ONLY the color conditionally so they never conflict
     return animatedCard === cardId
