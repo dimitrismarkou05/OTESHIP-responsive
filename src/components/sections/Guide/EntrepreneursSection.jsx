@@ -70,7 +70,7 @@ const EntrepreneursSection = () => {
 
               {/* Right Column: Practice */}
               <div className="w-full md:w-2/3 flex flex-row items-start gap-2.5 pt-0.5">
-                <i className="fa-solid fa-arrow-right text-slate-400 text-sm mt-0.5 hidden md:block"></i>
+                <i className="fa-solid fa-arrow-right text-slate-400 text-sm mt-1 hidden md:block shrink-0"></i>
                 <p className="text-sm text-(--color-bg-dark) dark:text-slate-300 leading-relaxed">
                   {item.practice}
                 </p>

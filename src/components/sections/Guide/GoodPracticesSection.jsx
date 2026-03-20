@@ -57,11 +57,13 @@ const GoodPracticesSection = () => {
         </div>
 
         {/* Practices Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-2 min-h-62.5 relative">
+        {/* FIX: Removed items-start so rows stretch to match each other, but not the container */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-2 relative items-stretch">
           {currentPractices.map((practice, index) => (
             <div
               key={`${activeTab}-${index}`}
-              className="flex flex-col gap-3 bg-slate-50 dark:bg-slate-800/40 p-5 rounded-md border border-(--color-divider)/30 hover:border-(--color-primary)/40 transition-colors animate-fade-in-up"
+              // Added h-full to ensure the background stretches to the row height
+              className="flex flex-col gap-3 bg-slate-50 dark:bg-slate-800/40 p-5 rounded-md border border-(--color-divider)/30 hover:border-(--color-primary)/40 transition-colors animate-fade-in-up h-full"
               style={{ animationDelay: `${index * 50}ms` }}
             >
               <div className="flex flex-row items-start gap-3">

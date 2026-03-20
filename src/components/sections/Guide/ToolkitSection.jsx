@@ -18,10 +18,7 @@ const ToolkitSection = () => {
   };
 
   return (
-    <section
-      className="flex flex-col gap-10 scroll-mt-32 w-full mb-8"
-      id="toolkit"
-    >
+    <section className="flex flex-col gap-10 scroll-mt-32 w-full" id="toolkit">
       {/* Header Section */}
       <div className="flex flex-col gap-3" data-aos="fade-up">
         <div className="flex flex-row items-center justify-start gap-2">

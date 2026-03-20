@@ -6,7 +6,7 @@ const GuideFooter = () => {
 
   return (
     <footer
-      className="pt-10 mb-12 flex flex-col items-center gap-8 w-full"
+      className="mb-12 flex flex-col items-center gap-8 w-full"
       data-aos="fade-up"
     >
       {/* Concluding Thought / "The End" */}

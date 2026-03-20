@@ -32,7 +32,7 @@ const MunicipalitySection = () => {
           data-aos="fade-down"
         >
           <div className="bg-(--color-primary)/20 w-12 h-12 flex items-center justify-center text-(--color-primary) rounded-md">
-            <i className="fa-solid fa-house-chimney-heart text-xl"></i>
+            <i className="fa-solid fa-people-roof text-xl"></i>
           </div>
           <h1 className="font-semibold text-xl text-(--color-dark-text) dark:text-white mt-2">
             {t("municipality.familyTitle")}

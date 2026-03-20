@@ -10,9 +10,6 @@ const SkillsSection = () => {
   // Tab state: 'greece', 'poland', or 'turkey'
   const [activeTab, setActiveTab] = useState("greece");
 
-  // Get the current array of skills based on the active tab
-  const currentSkills = skillsData[activeTab] || [];
-
   return (
     <section
       className="relative flex flex-col bg-(--color-dark-text) items-start gap-8 scroll-mt-32 drop-shadow-lg rounded-md p-8 overflow-hidden w-full"
@@ -41,7 +38,7 @@ const SkillsSection = () => {
           <button
             key={country}
             onClick={() => setActiveTab(country)}
-            className={`px-5 py-2.5 font-medium text-sm transition-all duration-300 relative ${
+            className={`cursor-pointer px-5 py-2.5 font-medium text-sm transition-all duration-300 relative ${
               activeTab === country
                 ? "text-white"
                 : "text-slate-400 hover:text-slate-200"
@@ -55,36 +52,51 @@ const SkillsSection = () => {
         ))}
       </div>
 
-      {/* Skills List */}
-      <div className="flex flex-col gap-6 w-full relative z-10 mt-2 min-h-75">
-        {currentSkills.map((item, index) => (
-          <React.Fragment key={`${activeTab}-${index}`}>
-            <div
-              className="flex flex-col gap-4 animate-fade-in"
-              ref={index === 0 ? firstSkillRef : null}
-            >
-              <div className="flex flex-row gap-5 items-start">
-                <div className="flex items-center justify-center bg-slate-800 rounded-full w-10 h-10 shrink-0 outline-1 outline-slate-600 drop-shadow-md">
-                  <p className="font-semibold text-(--color-gold2)">
-                    {item.order}
-                  </p>
-                </div>
-                <div className="flex flex-col items-start gap-1.5 mt-0.5">
-                  <h1 className="font-semibold text-base text-white">
-                    {item.title}
-                  </h1>
-                  <p className="text-sm text-slate-300 leading-relaxed max-w-4xl">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
+      {/* Skills List - CSS Grid to retain max height */}
+      <div className="grid w-full relative z-10 mt-2 min-h-75">
+        {["greece", "poland", "turkey"].map((country) => (
+          <div
+            key={country}
+            // All tabs sit in the same grid cell so the container grows to fit the tallest one
+            className={`col-start-1 row-start-1 flex flex-col gap-6 ${
+              activeTab === country
+                ? "opacity-100 visible z-10" // Active tab is visible
+                : "opacity-0 invisible pointer-events-none z-0" // Inactive tabs are hidden
+            }`}
+          >
+            {/* Only animate the items if this is the active tab */}
+            {skillsData[country]?.map((item, index) => (
+              <React.Fragment key={`${country}-${index}`}>
+                <div
+                  className={`flex flex-col gap-4 ${activeTab === country ? "animate-fade-in" : ""}`}
+                  ref={
+                    index === 0 && country === activeTab ? firstSkillRef : null
+                  }
+                >
+                  <div className="flex flex-row gap-5 items-start">
+                    <div className="flex items-center justify-center bg-slate-800 rounded-full w-10 h-10 shrink-0 outline-1 outline-slate-600 drop-shadow-md">
+                      <p className="font-semibold text-(--color-gold2)">
+                        {item.order}
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start gap-1.5 mt-0.5">
+                      <h1 className="font-semibold text-base text-white">
+                        {item.title}
+                      </h1>
+                      <p className="text-sm text-slate-300 leading-relaxed max-w-4xl">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
 
-              {/* Divider between items */}
-              {index < currentSkills.length - 1 && (
-                <div className="border-t border-slate-700/60 mt-2 ml-15"></div>
-              )}
-            </div>
-          </React.Fragment>
+                  {/* Divider between items */}
+                  {index < skillsData[country].length - 1 && (
+                    <div className="border-t border-slate-700/60 mt-2 ml-15"></div>
+                  )}
+                </div>
+              </React.Fragment>
+            ))}
+          </div>
         ))}
       </div>
 
