@@ -61,6 +61,13 @@
   }
 }
 
+@layer base {
+  body.guide-page {
+    @apply bg-[#F8FAFC] dark:bg-[#0b101a];
+    @apply shadow-[0_10px_0_0_#F8FAFC] dark:shadow-[0_10px_0_0_#0b101a];
+  }
+}
+
 .link-container:hover .hover-anim::before {
   width: 100%;
   left: 0;

@@ -45,6 +45,18 @@ export default function Index() {
     setIsSidebarOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (isGuidePage) {
+      document.body.classList.add("guide-page");
+    } else {
+      document.body.classList.remove("guide-page");
+    }
+
+    return () => {
+      document.body.classList.remove("guide-page");
+    };
+  }, [isGuidePage]);
+
   useLayoutEffect(() => {
     window.scrollTo({
       top: 0,
