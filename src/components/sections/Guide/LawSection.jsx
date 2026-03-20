@@ -61,7 +61,7 @@ const LawSection = () => {
             <button
               key={country}
               onClick={() => setActiveTab(country)}
-              className={`px-4 py-2 font-medium text-sm transition-colors relative ${
+              className={`px-4 py-2 font-medium text-sm transition-colors relative cursor-pointer ${
                 activeTab === country
                   ? "text-(--color-primary)"
                   : "text-(--color-bg-dark) hover:text-(--color-primary)/70"
