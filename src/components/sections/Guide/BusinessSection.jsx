@@ -146,7 +146,7 @@ const BusinessSection = () => {
           <h2 className="font-semibold text-lg xs:text-xl text-(--color-dark-text) dark:text-white">
             {t("business.stepsTitle")}
           </h2>
-          <p className="text-xs xs:text-sm md:text-base text-(--color-bg-dark) dark:text-(--color-bg-primary)">
+          <p className="text-xs xs:text-sm md:text-base text-(--color-bg-dark) dark:text-(--color-bg-primary) border-b border-(--color-divider)/50 pb-2">
             {t("business.stepsDesc")}
           </p>
         </div>
