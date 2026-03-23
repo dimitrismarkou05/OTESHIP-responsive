@@ -35,6 +35,11 @@ import grAccessibilityMenu from "./AccessibilityMenu/gr.json";
 import plAccessibilityMenu from "./AccessibilityMenu/pl.json";
 import trAccessibilityMenu from "./AccessibilityMenu/tr.json";
 
+import enNotFound from "./NotFound/en.json";
+import grNotFound from "./NotFound/gr.json";
+import plNotFound from "./NotFound/pl.json";
+import trNotFound from "./NotFound/tr.json";
+
 const resources = {
   en: {
     home: enHome,
@@ -44,6 +49,7 @@ const resources = {
     gallery: enGallery,
     layouts: enLayouts,
     accessibilityMenu: enAccessibilityMenu,
+    notFound: enNotFound,
   },
   ελ: {
     home: grHome,
@@ -53,6 +59,7 @@ const resources = {
     gallery: grGallery,
     layouts: grLayouts,
     accessibilityMenu: grAccessibilityMenu,
+    notFound: grNotFound,
   },
   pl: {
     home: plHome,
@@ -62,6 +69,7 @@ const resources = {
     gallery: plGallery,
     layouts: plLayouts,
     accessibilityMenu: plAccessibilityMenu,
+    notFound: plNotFound,
   },
   tr: {
     home: trHome,
@@ -71,6 +79,7 @@ const resources = {
     gallery: trGallery,
     layouts: trLayouts,
     accessibilityMenu: trAccessibilityMenu,
+    notFound: trNotFound,
   },
 };
 
@@ -92,6 +101,7 @@ i18n.use(initReactI18next).init({
     "workshops",
     "gallery",
     "accessibilityMenu",
+    "notFound",
   ],
 });
 
