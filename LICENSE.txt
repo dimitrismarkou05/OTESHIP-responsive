@@ -2,6 +2,10 @@ Copyright (c) 2026 Dimitris Markou
 
 All rights reserved.
 
-The source code in this repository is provided strictly for portfolio and showcase purposes. 
+This repository and its contents are provided strictly for viewing, evaluation, and educational purposes (e.g., by recruiters or hiring managers).
 
-You may view the code on GitHub, but you may not use, copy, modify, merge, publish, distribute, sublicense, or sell copies of the code, in whole or in part, without explicit written permission from the author.
+No permission is granted to use, copy, modify, merge, publish, distribute, sublicense, or sell this software, in whole or in part, without explicit prior written permission from the author.
+
+Any unauthorized use of this code is strictly prohibited.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
