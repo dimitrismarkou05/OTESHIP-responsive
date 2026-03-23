@@ -1,5 +1,7 @@
 # OTESHIP Project
 
+> **⚠️ Notice:** This project is not open-source. It is publicly available for portfolio and evaluation purposes only.
+
 This repository contains the source code for the frontend of the OTESHIP (Our Tradition... Our Entrepreneurship) platform. The project is an Erasmus+ co-funded initiative designed to showcase the collaboration, educational processes, and ceramic products created by students from special education schools across Greece, Poland, and Turkey.
 
 ## Architecture and Technology Stack
@@ -53,6 +55,8 @@ To initialize this project locally for code review or environment testing:
 
 Copyright (c) 2026 Dimitris Markou
 
-This repository is completely public strictly to showcase the source code for portfolio and evaluation purposes. It is **not** open-source software.
+This repository is publicly accessible for portfolio, evaluation, and educational viewing purposes only. It is **not** open-source software.
 
-You are permitted to read and review the code on the GitHub platform. However, you may not use, copy, modify, merge, publish, distribute, sublicense, or sell copies of this code, in whole or in part, for your own personal or commercial projects without explicit, prior written permission from the author.
+No permission is granted to use, copy, modify, merge, publish, distribute, sublicense, or sell this code, in whole or in part, without explicit prior written permission from the author.
+
+For full terms, see the LICENSE.txt file.
