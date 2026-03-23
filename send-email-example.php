@@ -31,6 +31,7 @@ header("Content-Type: application/json");
 
 //Handle the browser preflight OPTIONS request
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    ob_end_clean();
     http_response_code(200);
     exit();
 }
